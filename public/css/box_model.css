@@ -1,0 +1,55 @@
+div{
+	border: 1px solid black;
+	width: 50px;
+	height: 50px;
+	padding: 10px;
+	margin: 25px;
+
+	color: white;
+}
+
+img{
+	position: relative;
+	top: -111px;
+	right: -40px;
+}
+h1{
+	font-weight: bold;
+}
+
+
+#red{
+	background-color: red;
+	float: left;
+}
+
+#orange{
+	background-color: orange;
+	float: left;
+}
+
+#yellow{
+	background-color: yellow;
+	color: black;
+	float: left;
+}
+
+#green{
+	background-color: green;
+	float: left;
+	clear: both;
+}
+
+#blue{
+	background-color: blue;
+	float: left;
+}
+
+#purple{
+	background-color: purple;
+	float: left;
+}
+
+
+
+

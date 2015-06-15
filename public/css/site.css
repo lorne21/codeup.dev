@@ -1,0 +1,38 @@
+h2{
+	color: red;
+	text-decoration: underline;
+}
+
+body{
+	font-family: 'Shadows Into Light', cursive;
+	font-weight: bold;
+}
+
+.one{
+	list-style: circle; 
+}
+
+html { 
+  background: url(/img/beach.jpg) no-repeat center center fixed; 
+  /*-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;*/
+  background-size: cover;
+}
+
+table {
+	background-color: rgb(253, 245, 230);
+	table-layout: fixed;
+	text-align: center;
+}
+
+
+/* visited link (:visited) */
+.web a:visited {
+    color:red;
+}
+
+/* mouse hover over link (:hover) */
+.web a:hover {
+    color:red;
+}
