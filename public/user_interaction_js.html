@@ -1,0 +1,41 @@
+<html>
+
+<head>
+	
+	<title></title>
+
+</head>
+
+<body>
+	
+	<h1>User Interaction Exercise</h1>
+
+	<script> 
+		// todo: Ask the user for their name.
+//       Keep asking if an empty input is provided.
+	var quest;
+
+	do {
+		quest = prompt ("What is your name")
+	} while (!quest);
+
+// todo: Show an alert message that welcomes the user based on their input.
+
+	alert ("Welcome " + quest + "!")
+
+// todo: Ask the user if they like pizza.
+//       Based on their answer show a creative alert message.
+	
+	var confirmed = confirm ("Do you like pizza " + quest + "?")
+	if (confirmed) {
+		alert ("You must be a ninja turtle!!!!!!")
+	} else {
+		alert ("That's one way to lose at life")
+	}
+
+		
+	</script>
+
+</body>
+
+</html>
