@@ -1,0 +1,35 @@
+<html>
+
+<head>
+	
+	<title></title>
+
+</head>
+
+<body>
+	
+	<h1>Arrays Exercise</h1>
+
+	<script> 
+	"use strict";
+
+		(function () {
+
+			var names = ["Lorne", "Joseph", "Don", "Kathleen"];
+
+			for (var i = 0; i < names.length; i++){
+				console.log ('The person at ' + i + " is " + names[i]);
+			};
+
+			names.forEach(function (element, index, array){
+				console.log ('The person at ' + index + " is " + element);
+			});
+
+		
+		})()	
+
+	</script>
+
+</body>
+
+</html>

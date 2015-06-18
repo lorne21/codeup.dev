@@ -11,30 +11,25 @@
 	<h1>Function Exercise</h1>
 
 	<script> 
+	"use strict";
 
 		(function () {
 
 
-		var myNameIs = 'Lorne'; 
-		var message; 
-		var random = Math.floor((Math.random()*100)+1);
+			var myNameIs = 'Lorne'; 
+			var random = Math.floor((Math.random()*100)+1);
+	
+			function sayHello (name){
+				return "Hello " + myNameIs
+			}
+	
+			function isOdd (number) {
+				return (random % 2 == 0) ? "This is Even: " + number: "This is Odd: " + number;
+			}
 
-		function sayHello (name){
-			console.log ("Hello " + myNameIs)
-
-		}
-
-		sayHello (myNameIs)
-		
-
-		function isOdd (number) {
-			
-			message = (random % 2 == 0) ? "This is Even: " + number: "This is Odd: " + number;
-			
-			console.log (message);
-		}
-			
-		isOdd (random)
+			console.log (sayHello (myNameIs))
+				
+			console.log (isOdd (random))
 		
 		})()	
 
