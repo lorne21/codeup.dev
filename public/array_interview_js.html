@@ -15,24 +15,20 @@
 
 		(function () {
 
-			var gamma = ['a', 'b', 'c', 'd', 'e'];
+			var alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
 
-			var back = gamma.unshift(gamma[2])
+			console.log(alpha)
 
-			// gamma.pop(back)
-
-			// console.log (gamma)
-
-
-			for (var i = gamma.length - 1; i >= 0; i--){
-				gamma.pop(back)
-				console.log (gamma)
-			}
-				
-
-			
-
-
+			function reverseAlpha (alpha){
+				for (var i = alpha.length - 1; i >= 0; i --){
+					alpha.push(alpha[i]);
+				} 
+				alpha.splice(0, alpha.length / 2);
+				return alpha;
+			};
+			reverseAlpha(alpha);
+			console.log(alpha); 
+		
 		
 		})()	
 
