@@ -58,23 +58,23 @@
             var subListen = function (){
                 subHeader.style.color = 'rgb(123, 255, 255)';  
             };
-            document.getElementById('btn2').addEventListener('click', subListen, false) 
+            document.getElementById('btn2').addEventListener('click', subListen, false); 
 
             // TODO: Uncomment the next line and get all list items
             var listItems = document.getElementsByTagName("li")
             for (var i = 0; i < listItems.length; i++){
-                console.log (listItems[i])
+                console.log (listItems[i]);
             };
 
             // TODO: Set text color on every other list item to grey
             var listListen = function (){
                 for (var i = 0; i <listItems.length; i++){
-                    if (i % 2 == 0)
-                    listItems[i].style.color = 'rgb(123, 104, 238)'
+                    if (i % 2 == 0);
+                    listItems[i].style.color = 'rgb(123, 104, 238)';
                 }
             }
 
-            document.getElementById('btn3').addEventListener('click', listListen, false) 
+            document.getElementById('btn3').addEventListener('click', listListen, false); 
 
             // TODO: Set text color of li with dbid = 1 to blue
             var liItem = document.getElementsByTagName("li")[0];
@@ -85,10 +85,10 @@
 
             // TODO: Change the text in the first sub paragraph to "Mission Accomplished!"
             var parListen = function (){
-                subParagraphs[0].innerHTML = "Mission Accomplished!"
+                subParagraphs[0].innerHTML = "Mission Accomplished!";
             }
 
-            document.getElementById('btn4').addEventListener('click', parListen, false) 
+            document.getElementById('btn4').addEventListener('click', parListen, false); 
         })();
     </script>
 </body>
