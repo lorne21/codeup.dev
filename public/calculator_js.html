@@ -1,0 +1,216 @@
+<html>
+
+<head>
+	
+	<title>Lorne's Calculator</title>
+
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/css/calculator.css">
+
+
+</head>
+
+<body>
+		<div class="span6 well">
+          <div id="calc-board">
+            <div class="row-fluid"> 
+				<p>
+				<input id="left" name="left" rows="2" cols="10" placeholder="0"></input>
+				<input id="middle" name="middle" rows="2" cols="3" placeholder="0"></input>
+				<input id="right" name="right" rows="2" cols="10" placeholder="0"></input>
+				</p>
+			</div>
+			<div class="row-fluid">
+			<button id = "one" value="1">1</button>
+			<button id = "two" value="2">2</button>
+			<button id = "three" value="3">3</button>
+			<button id = "plus" value="+">+</button>
+			</div>
+			<div class="row-fluid">
+			<button id = "four" value="4">4</button>
+			<button id = "five" value="5">5</button>
+			<button id = "six" value="6">6</button>
+			<button id = "minus" value="-">-</button>
+			</div>
+			<div class="row-fluid">
+			<button id = "seven" value="7">7</button>
+			<button id = "eight" value="8">8</button>
+			<button id = "nine" value="9">9</button>
+			<button id = "times" value="*">*</button>
+			</div>
+			<button id = "clear" value="C">C</button>
+			<button id = "zero" value="0">0</button>
+			<button id = "equals" value="=">=</button>
+			<button id = "divide" value="/">/</button>
+			</div>
+		  </div>
+		</div>
+
+	
+	<script>; 
+	"use strict";
+
+		(function () {
+
+			var pressone = document.getElementById('one');
+			var presstwo = document.getElementById('two');
+			var pressthree = document.getElementById('three');
+			var pressfour = document.getElementById('four');
+			var pressfive = document.getElementById('five');
+			var presssix = document.getElementById('six');
+			var pressseven = document.getElementById('seven');
+			var presseight = document.getElementById('eight');
+			var pressnine = document.getElementById('nine');
+			var presszero = document.getElementById('zero');
+			var pressplus = document.getElementById('plus');
+			var pressminus = document.getElementById('minus');
+			var presstimes = document.getElementById('times');
+			var pressdivide = document.getElementById('divide');
+			var pressequals = document.getElementById('equals');
+			var pressclear = document.getElementById('clear');
+
+			var leftop = document.getElementById('left');
+			var midop = document.getElementById('middle');
+			var rightop = document.getElementById('right');
+			
+
+			pressone.addEventListener('click', function(){
+				if (midop.value == 0){
+					leftop.value += pressone.value;
+				} else if (midop.value !== 0){
+					rightop.value += pressone.value;
+				}
+			},false); 
+
+			presstwo.addEventListener('click', function(){
+				if (midop.value == 0){
+					leftop.value += presstwo.value;
+				} else if (midop.value !== 0){
+					rightop.value += presstwo.value;
+				}
+			},false);
+
+			pressthree.addEventListener('click', function(){
+				if (midop.value == 0){
+					leftop.value += pressthree.value;
+				} else if (midop.value !== 0){
+					rightop.value += pressthree.value;
+				}
+			},false);
+
+			pressfour.addEventListener('click', function(){
+				if (midop.value == 0){
+					leftop.value += pressfour.value;
+				} else if (midop.value !== 0){
+					rightop.value += pressfour.value;
+				}
+			},false);
+
+			pressfive.addEventListener('click', function(){
+				if (midop.value == 0){
+					leftop.value += pressfive.value;
+				} else if (midop.value !== 0){
+					rightop.value += pressfive.value;
+				}
+			},false);
+
+			presssix.addEventListener('click', function(){
+				if (midop.value == 0){
+					leftop.value += presssix.value;
+				} else if (midop.value !== 0){
+					rightop.value += presssix.value;
+				}
+			},false);
+
+			pressseven.addEventListener('click', function(){
+				if (midop.value == 0){
+					leftop.value += pressseven.value;
+				} else if (midop.value !== 0){
+					rightop.value += pressseven.value;
+				}
+			},false);
+
+			presseight.addEventListener('click', function(){
+				if (midop.value == 0){
+					leftop.value += presseight.value;
+				} else if (midop.value !== 0){
+					rightop.value += presseight.value;
+				}
+			},false);
+
+			pressnine.addEventListener('click', function(){
+				if (midop.value == 0){
+					leftop.value += pressnine.value;
+				} else if (midop.value !== 0){
+					rightop.value += pressnine.value;
+				}
+			},false);
+
+			presszero.addEventListener('click', function(){
+				if (midop.value == 0){
+					leftop.value += presszero.value;
+				} else if (midop.value !== 0){
+					rightop.value += presszero.value;
+				}
+			},false);
+
+			// Operator Event Listeners 
+			
+			pressplus.addEventListener('click', function(){
+				if (leftop.value !== 0){
+					midop.value = pressplus.value;
+				} 
+			},false);
+
+			pressminus.addEventListener('click', function(){
+				if (leftop.value !== 0){
+					midop.value = pressminus.value;
+				} 
+			},false);
+
+			presstimes.addEventListener('click', function(){
+				if (leftop.value !== 0){
+					midop.value = presstimes.value;
+				} 
+			},false);
+
+			pressdivide.addEventListener('click', function(){
+				if (leftop.value !== 0){
+					midop.value = pressdivide.value;
+				} 
+			},false);
+
+			
+			// equals/clear functions
+
+			pressequals.addEventListener('click', function(){
+				if (midop.value == "+"){
+					leftop.value =(parseInt(leftop.value) + parseInt(rightop.value))
+					rightop.value = "";
+				} else if (midop.value == "-"){
+					leftop.value =(parseInt(leftop.value) - parseInt(rightop.value))
+					rightop.value = "";
+				} else if (midop.value == "*"){
+					leftop.value =(parseInt(leftop.value) * parseInt(rightop.value))
+					rightop.value = "";
+				} else if (midop.value == "/"){
+					leftop.value =(parseInt(leftop.value) / parseInt(rightop.value))
+					rightop.value = "";
+				} 
+			});
+			
+			pressclear.addEventListener('click', function(){
+				if (pressclear.value == "C");
+					leftop.value = "";
+					rightop.value = "";
+					midop.value = "";
+			})
+		
+		
+		})()	
+
+	</script>
+
+</body>
+
+</html>
