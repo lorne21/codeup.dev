@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACIJL0I_4DPWkoa7BKdBdm2DnDtmZ56I4">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: { lat: 38.4028, lng: -122.3619},
+          zoom: 15
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+        var bouchon = { lat: 38.4028, lng: -122.3619};
+
+        var marker = new google.maps.Marker({
+            position: bouchon,
+            map: map
+        });
+  
+        var infowindow = new google.maps.InfoWindow({
+          content: 'Bouchon'
+        });
+  
+        infowindow.open(map,marker);
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+
+    </script>
+  </head>
+  <body>
+	<div id="map-canvas"></div>
+  </body>
+</html>
