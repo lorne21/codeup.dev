@@ -8,11 +8,14 @@
 
 	<script src="/js/jquery.js"></script>
 	<script>
-	"use strict";
+	"use strict"
 
 		$(document).ready(function() {
-			$('.codeup').css('border', '1px red solid');
-		});	
+			$('li').css('font-size', '20px'); 
+			$('li, h1, p').css('background-color', 'yellow');
+			var contents = $('h1');
+			alert(contents.html());
+		})	
 		
 	</script>
 
@@ -52,6 +55,6 @@
 
 	<a href="#top"> Go to top </a>
 
-</body>
+</body>;
 
 </html>
