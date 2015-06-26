@@ -1,0 +1,73 @@
+<html>
+<head>
+	<title>JQuery FAQ</title>
+	<script src="/js/jquery.js"></script>
+
+	<style type="text/css">
+
+		.invisible{
+			display: none;
+		}
+
+	</style>
+
+	<script>
+	"use strict"
+
+		$(document).ready(function() {
+			
+			$('dd').addClass('invisible')
+
+			$('#display').click(function(event){
+				event.preventDefault();
+				$('dd').toggleClass('invisible')
+			});
+			
+		}); 
+
+	</script>
+
+</head>
+<body>
+
+	<h1>Our National Parks</h1>
+
+	<div class = "parks">
+		<dl>
+				<dt>Yellowstone</dt>
+				<dd>The world's very first national park remains the showpiece of the National Park Service, visited by more than 3.5 million people a year. The vast reserve—covering 2.2 million acres in Wyoming, Idaho, and Montana—has craggy peaks, explosive geysers, alpine lakes, deep forests, and a wealth of wild animals. The stars are bison, bears, sheep, moose, and wolves.</dd>
+
+				<dt>Rocky Mountain</dt>
+				<dd>Sweeping vistas are a main attraction at Rocky Mountain National Park in Colorado. The park contains 150 lakes and 450 miles of streams, plus ecosystems ranging from wetlands to pine forests to montane areas to alpine tundra.</dd>
+
+				<dt>Yosemite</dt>
+				<dd>"No temple made with human hands can compete with Yosemite," wrote John Muir, whose crusading led to the creation of the California park in 1890. Nearly four million visitors come to this temple annually, most of them spending time in the Yosemite Valley. This mile-wide, 7-mile-long canyon was cut by a river and then widened and deepened by glacial action.</dd>
+
+				<dt>Grand Canyon</dt>
+				<dd>In 2014, 4.8 million people witnessed the wonders of one of the largest canyons on Earth. A mile deep and up to 18 miles wide at spots, the Grand Canyon is so vast that even from the best vantage point only a fraction of its 277 miles can be seen.</dd>
+
+				<dt>Grand Teton</dt>
+				<dd>The peaks of the Teton Range, regal and imposing as they stand nearly 7,000 feet above the Wyoming valley floor, make one of the boldest geological statements in the Rockies. The park's jewel-like lakes, blue and white glaciers, and naked granite pinnacles draw 2.8 million visitors a year.</dd>
+
+				<dt>Great Smoky Mountains</dt>
+				<dd>The most popular is the Great Smoky Mountains National Park, which draws more than ten million visitors annually—more than twice the number of the second most popular park. Most visitors see the park from a mountain-skimming scenic highway; many take to the more than 800 miles of hiking trails across North Carolina and Tennessee.</dd>
+
+				<dt>Olympic</dt>
+				<dd>More than three million people a year explore the unspoiled terrain of Olympic National Park in Washington State. No roads cross through the park, which contains three distinct ecosystems: temperate rain forest (seen here), subalpine forest and wildflower meadow, and rugged Pacific shore.</dd>
+
+				<dt>Zion</dt>
+				<dd>Rising in Utah’s high plateau country, the Virgin River carves its way through Zion Canyon to the desert below. The park’s striking vertical topography—rock towers, sandstone canyons, and sharp cliffs—attracts 3.5 million visitors a year.</dd>
+
+				<dt>Acadia</dt>
+				<dd>Sea and mountain meet at Acadia National Park in Maine. Most of the park is on Mount Desert Island, a patchwork of parkland, private property, and seaside villages.</dd>
+
+				<dt>Glacier</dt>
+				<dd>Rounding out the top ten most popular parks is Glacier National Park, which covers over a million acres in Montana and draws 2.3 million people a year. The park's Going-to-the-Sun Road is considered by many to be one of the world's most spectacular drives.</dd>
+			</dl>
+
+			<a href = "#" id ="display">Display or Hide Information on National Parks.
+
+	</div>
+
+</body>
+</html>

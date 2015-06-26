@@ -11,11 +11,31 @@
 	"use strict"
 
 		$(document).ready(function() {
-			$('li').css('font-size', '20px'); 
-			$('li, h1, p').css('background-color', 'yellow');
-			var contents = $('h1');
-			alert(contents.html());
-		})	
+			
+			$('h1').click (function(){
+				$(this).css('background-color' ,'blue')
+			});
+
+			var twoclick = false
+			
+			$('p').dblclick (function(){
+				if (!twoclick){
+					$('p').css('font-size', '18pt')
+					twoclick = true
+				} else if (twoclick){
+					$('p').css('font-size' , '12pt')
+					twoclick = false
+				}
+			});
+
+			$('li').hover ( 
+				function(){
+				$(this).css('color', 'red');
+				},
+				function(){
+				$(this).css('color', 'black');
+			});
+		});	
 		
 	</script>
 

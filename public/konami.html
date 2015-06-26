@@ -1,0 +1,39 @@
+<html>
+
+<head>
+	
+	<title>Konami Code</title>
+
+	<script src="/js/jquery.js"></script>
+	<script>
+	"use strict"
+
+		$(document).ready(function() {
+			var contra = "38,38,40,40,37,39,37,39,66,65,13"
+			var entered = []
+			
+			$(document).keyup(function(e) {
+				entered.push(e.keyCode);
+				if (entered.toString().indexOf(contra) >= 0){
+					alert("You Shall Not Pa--Ooops! I mean, You Shall Pass!");
+					entered = [];
+				}
+			});	
+		}); 
+
+	</script>
+
+</head>
+
+<body>
+	
+	<h1>Konami Code</h1>
+
+	<p>Enter the special code:</p>
+    <form>
+
+    </form>
+
+</body>
+
+</html>
