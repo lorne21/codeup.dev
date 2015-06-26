@@ -45,7 +45,12 @@
 
 			$('h3').click(function(event){
 				event.preventDefault();
-				$('ul').removeClass('invisible');
+				$('ul').toggleClass('invisible');
+			});
+
+			$('dt').click(function(event){
+				event.preventDefault();
+				$(this).next().toggleClass('invisible');
 			});
 			
 		}); 
