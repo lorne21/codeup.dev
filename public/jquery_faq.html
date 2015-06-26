@@ -16,11 +16,24 @@
 
 		$(document).ready(function() {
 			
-			$('dd').addClass('invisible')
+			$('dd').addClass('invisible');
 
 			$('#display').click(function(event){
 				event.preventDefault();
-				$('dd').toggleClass('invisible')
+				$('dd').toggleClass('invisible');
+			});
+
+			
+			$('li:first-child').css('font-weight', 'bold')
+
+			$('li').click(function(event){
+				event.preventDefault();
+				$('li').parent().addClass('invisible');
+			});
+
+			$('h3').click(function(event){
+				event.preventDefault();
+				$('ul').removeClass('invisible');
 			});
 			
 		}); 
@@ -64,6 +77,30 @@
 				<dt>Glacier</dt>
 				<dd>Rounding out the top ten most popular parks is Glacier National Park, which covers over a million acres in Montana and draws 2.3 million people a year. The park's Going-to-the-Sun Road is considered by many to be one of the world's most spectacular drives.</dd>
 			</dl>
+
+			<h3>Yellowstone National Park</h3>
+			<ul>
+				<li>1st National Park</li>
+				<li>Bison, Bears, and Wolves...'Oh My!'</li>
+				<li>3.5 million visitors annually</li>
+				<li>Lots of geysers</li>
+			</ul>
+
+			<h3>Yosemite National Park</h3>
+			<ul>
+				<li>Half-Dome</li>
+				<li>4 million visitors annually</li>
+				<li>Yosemite Valley</li>
+				<li>California</li>
+			</ul>
+
+			<h3>Grand Canyon National Park</h3>
+			<ul>
+				<li>One of Largest Canyons on Earth</li>
+				<li>277 miles long</li>
+				<li>4.8 million visitors annually</li>
+				<li>Up to a mile deep</li>
+			</ul>
 
 			<a href = "#" id ="display">Display or Hide Information on National Parks.
 
