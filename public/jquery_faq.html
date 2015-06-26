@@ -9,6 +9,18 @@
 			display: none;
 		}
 
+		html { 
+  			background: url(/img/halfdome3.jpg) no-repeat center center fixed; 
+  			background-size: cover;
+		}
+
+		body {
+			color: white;
+		}
+
+		a {
+			color: white;
+		}
 	</style>
 
 	<script>
@@ -17,14 +29,14 @@
 		$(document).ready(function() {
 			
 			$('dd').addClass('invisible');
+			$('dt').css('font-weight' , 'bold');
 
 			$('#display').click(function(event){
 				event.preventDefault();
 				$('dd').toggleClass('invisible');
 			});
-
 			
-			$('li:first-child').css('font-weight', 'bold')
+			$('li:first-child').css('font-weight', 'bold');
 
 			$('li').click(function(event){
 				event.preventDefault();
