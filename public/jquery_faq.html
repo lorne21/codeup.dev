@@ -39,17 +39,14 @@
 			$('li:first-child').css('font-weight', 'bold');
 
 			$('li').click(function(event){
-				event.preventDefault();
-				$('li').parent().addClass('invisible');
+				$(this).parent().hide();
 			});
 
 			$('h3').click(function(event){
-				event.preventDefault();
-				$('ul').toggleClass('invisible');
+				$(this).next('ul').show();
 			});
 
 			$('dt').click(function(event){
-				event.preventDefault();
 				$(this).next().toggleClass('invisible');
 			});
 			
