@@ -39,11 +39,11 @@
 			$('li:first-child').css('font-weight', 'bold');
 
 			$('li').click(function(event){
-				$(this).parent().hide();
+				$(this).parent().slideUp();
 			});
 
 			$('h3').click(function(event){
-				$(this).next('ul').show();
+				$(this).next('ul').slideDown();
 			});
 
 			$('dt').click(function(event){
