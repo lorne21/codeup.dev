@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Online Store</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <style type="text/css">
+        
+        .jumbotron { 
+            background: url(/img/hammer2.jpg) no-repeat center center; 
+            background-size: cover;
+            color: white;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Hammer Time</h1>
+            <p>Can't Touch This</p>
+        </div>
+    </div>
+    
+    <table class="table table-bordered table-hover" id="products">
+        <thead>
+            <tr>
+                <th class="info">Title</th>
+                <th class="info">Quantity</th>
+                <th class="info">Price</th>
+                <th class="info">Categories</th>
+            </tr>
+        </thead>
+        <tbody id="insertProducts"></tbody>
+    </table>
+
+    <p><button type="button" class="btn btn-info" id="refresh">Refresh Table</button></p>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <script>
+    "use strict";
+
+    (function() {
+        // TODO: Create an ajax GET request for /data/inventory.json
+        $.ajax("/data/inventory.json").done(function(data){
+            $.each(data, function(i, data){
+                $("#insertProducts").append("<tr><td>" + data.title + "</td><td>" + data.quantity + "</td><td>"+ data.price + "</td><td>" + data.categories + "</td></tr>");
+            });
+            console.log(data);
+        });
+
+        $('#refresh').click(function(event){
+            $("#insertProducts").html("");
+            $.get($.ajax('/data/inventory.json').done(function(data){
+                $.each(data, function(i, data){
+                    $("#insertProducts").append("<tr><td>" + data.title + "</td><td>" + data.quantity + "</td><td>"+ data.price + "</td><td>" + data.categories + "</td></tr>");
+                });
+            }))
+        });
+    })();
+    </script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -12,19 +12,20 @@
             margin: 15px;
         }
 
-        .box {
-            background-color: #000033;
+        img {
             height: 250px;
             margin: 15px;
             position: relative;
             width: 250px;
         }
+
+
     </style>
 </head>
 <body>
 
     <p>
-        <button id="btn-move">Move It</button>
+        <button id="btn-right">Move Right</button>
 
         <button id="btn-scale-up">Scale It</button>
 
@@ -32,10 +33,20 @@
 
         <button id="btn-show">Show It</button>
 
+        <button id="btn-up">Move Up</button>
+
+        <button id="btn-down">Move Down</button>
+
+        <button id="btn-left">Move Left</button>
+
         <button id="btn-all">Animate all</button>
+
+        <button id="btn-reset">Reset</button>
     </p>
 
-    <div id="animate-box" class="box"></div>
+    <div id="animate-box" class="box">
+        <img src="/img/catunicorn.jpg" Alt = "Cat Unicorn">
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
@@ -46,42 +57,77 @@
 
                 $('document').ready(function(){
             // todo: Move the box by 100 pixels from the left
-                    $('#btn-move').click(function(){
-                        $('.box')
+                    $('#btn-right').click(function(){
+                        $('img')
                             .animate({ 
                                 left: "+=100"
                             }, 1000)
                     });
+
+                    $('#btn-left').click(function(){
+                        $('img')
+                            .animate({ 
+                                left: "-=100"
+                            }, 1000)
+                    });
+
+                    $('#btn-up').click(function(){
+                        $('img')
+                            .animate({ 
+                                top: "-=100"
+                            }, 1000)
+                    });
+
+                    $('#btn-down').click(function(){
+                        $('img')
+                            .animate({ 
+                                top: "+=100"
+                            }, 1000)
+                    });
             // todo: Scale the width up by 50%
                     $('#btn-scale-up').click(function(){
-                        $('.box')
+                        $('img')
+                            .animate({ width: "+=125"}, 500)
                             .animate({ 
-                                width: "50%"
-                            }, 500)
+                                // marginLeft: "+=0"
+                                width: "+=0",
+                                marginLeft: "+=125"
+
+                            }, 1000)
                     }); 
 
             // todo: Use opacity to make the box invisible
                     $('#btn-disappear').click(function(){
-                        $('.box').animate({
+                        $('img').animate({
                             opacity: 0
                         }, 2000)
-                    })
+                    });
+
+                    $(document).mousemove(function(event){
+                        $('img').css('position','absolute')
+                    });
 
             // todo: Make the box appear again with opacity
                     $('#btn-show').click(function(){
-                        $('.box').animate({
+                        $('img').animate({
                             opacity: 1
                         }, 2000)
-                    })
+                    });
+
+                    $('#btn-reset').click(function(){
+                        location.reload()
+                    });
             // todo: Once all is done see if you can chain all the animations
             // to happen with the `Animate all` button.
             // Refresh to start over before hitting the button.
                     $('#btn-all').click(function(){
-                        $('.box')
+                        $('.img')
                             .animate({ opacity: 0 }, 2000)
-                            .animate({ left: "+=200" }, 1000)
+                            // .animate({ left: "+=200" }, 1000)
                             .animate({ opacity: 1 }, 5000)
-                            .animate({ width: "50%" }, 8000);
+                            .animate({ width: "50%" }, 8000)
+                            .animate({ width: "25%"}, 9000);
+
                             
                     });
                 });
