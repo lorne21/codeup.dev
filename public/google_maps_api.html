@@ -17,25 +17,15 @@
             mapOptions);
         var bouchon = { lat: 38.4028, lng: -122.3619};
 
-        var frenchLaundry = { lat: 38.404427, lng: -122.3649798};
 
         var marker = new google.maps.Marker({
             position: bouchon,
             map: map
         });
 
-        // var marker2 = new google.maps.Marker({
-        //     position: frenchLaundry,
-        //     map: map
-        // });
-  
         var infowindow = new google.maps.InfoWindow({
           content: 'Bouchon', 
         });
-
-        // var infowindow2 = new google.maps.InfoWindow({
-        //   content: 'French Laundry', 
-        // });
   
         infowindow.open(map,marker);
         }
