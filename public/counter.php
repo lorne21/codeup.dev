@@ -49,8 +49,8 @@ extract(pageController());
 	<h1 align="center">The Count....Ah, Ah, Ahhh</h1>
 	<h2 align="center"><?= $counter ?></h2>
 	<div id="updown" align="center">
-	     <a href="?request=up&count=<?=$counter?>">UP>
-	     <a href="?request=down&count=<?=$counter?>">DOWN>
+	     <a href="?request=up&count=<?=$counter?>">UP</a>
+	     <a href="?request=down&count=<?=$counter?>">DOWN</a>
 	</div>
 	<br>
 	<div align="center" class="container"></div>
