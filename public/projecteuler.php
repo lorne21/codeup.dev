@@ -1,6 +1,6 @@
 <?php
 
-$findFactor = 13195; 
+$findFactor = 600851475143; 
 
 $arrayToCheck = [];
 
@@ -10,7 +10,7 @@ $isNotPrime = [];
 
 for ($i = 3; $i <= $findFactor; $i++){
 	if ($findFactor % $i == 0){
-		// echo $i . PHP_EOL; 
+		echo $i . PHP_EOL; 
 		array_push($arrayToCheck, $i); 
 	}
 }

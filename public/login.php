@@ -1,14 +1,26 @@
 <?php
 
 var_dump($_POST); 
+
+session_start();
+
+$_SESSION['LOGGED_IN_USER'] = false;
  
 if(!empty($_POST)){
 	if ($_POST['username'] == "guest" && $_POST['password'] == "password"){
-		header("Location: http://codeup.dev/authorized.php");
+		$_SESSION['LOGGED_IN_USER'] = true;
+		$_SESSION['USERNAME'] = $_POST['username']; 
+		if ($_SESSION['LOGGED_IN_USER']) {	
+			header("Location: http://codeup.dev/authorized.php");
+			exit();
+		}
 	} else {
 		echo "Login Failed!";
 	}
 }
+
+
+
 	
 	
 
@@ -19,9 +31,6 @@ if(!empty($_POST)){
 <html>
 <head>
 	<title>Login</title>
-
-	
-
 </head>
 <body>
 
