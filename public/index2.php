@@ -1,17 +1,5 @@
 <?php
 
-require 'navbar.php';
-require 'header.php';
-require 'footer.php';
-
-
-
-
-
-
-
-
-
 
 ?>
 <html>
@@ -19,6 +7,9 @@ require 'footer.php';
 	<title>Main Page</title>
 </head>
 <body>
+	<?= require 'navbar.php'; ?>
+	<?= require 'header.php'; ?>
+	<?= require 'footer.php'; ?>
 
 </body>
 </html>
