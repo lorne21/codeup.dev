@@ -1,28 +1,19 @@
 <?php
 
-require 'functions.php'
+require_once '../Input.php';
  
-function pageController()
-{
-	$data = [];
-	
-	$data['counter'] = 0;
-	
-	if(isset($_GET['request'])){
-		if ($_GET['request'] == 'hit'){
-			$_GET['count']++; 
-			$data['counter'] = $_GET['count'];
-		} else if ($_GET['request'] == 'miss'){
-			echo ("You Lose");
-			$_GET['count'] = 0;
-			$data['counter'] = $_GET['count'];
-		} 
+$counter = 0;
+
+if (Input::has('request')){
+	if(Input::get('request') == 'hit'){
+		$_GET['count']++;
+		$counter = $_GET['count'];
+	} else if (Input::get('request') == 'miss'){
+		echo ("You Lose");
+		$_GET['count'] = 0; 
+		$counter = $_GET['count'];
 	}
-
-	return $data; 
-}
-
-extract(pageController());
+} 
 
 
 ?>
