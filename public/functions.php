@@ -1,8 +1,5 @@
 <?php
 
-session_start();
-
-var_dump($_REQUEST); 
 
 function inputHas($key){
 	if (isset($_REQUEST[$key])){
@@ -12,7 +9,7 @@ function inputHas($key){
 	}
 }
 
-echo inputHas('username'); 
+// echo inputHas('username'); 
 
 
 function inputGet($key){
@@ -23,7 +20,7 @@ function inputGet($key){
 	}
 }
 
-echo inputGet('username');
+// echo inputGet('username');
 
 function escape($input){
 	$newString = htmlspecialchars(strip_tags($input));

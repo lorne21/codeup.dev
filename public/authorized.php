@@ -1,19 +1,19 @@
 <?php
 
-var_dump($_POST); 
+// var_dump($_POST); 
 
 session_start();
 
-$username = "";
+require_once "../Auth.php";
 
-if($_SESSION['LOGGED_IN_USER'] == true){
-	if (isset($_SESSION['USERNAME'])){
-		$username = $_SESSION['USERNAME'];
-	} 
+if(Auth::check()){
+	$_SESSION['loginmessage'] = 'Logged in';
 } else {
 	header("Location: login.php");
 	exit();
 }
+
+// var_dump(Auth::check());
 
 
 ?>
@@ -24,8 +24,9 @@ if($_SESSION['LOGGED_IN_USER'] == true){
 	<title>Authorized</title>
 </head>
 <body>
-	<p>Authorized</p>
-	<p><?= $username ?></p> 
+	<h2>Authorized</h2>
+	<p><?= $_SESSION['loginmessage'] ?></p>
+	<p>User: <?= $_SESSION['USERNAME'] ?></p> 
 
 	<a href="logout.php">Logout</a>
 </body>
