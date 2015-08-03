@@ -4,7 +4,6 @@ session_start();
 
 require_once "../Auth.php";
 
-
 $_SESSION['loginmessage'] = '';
 
 $username = escape(Input::get('username')); 
