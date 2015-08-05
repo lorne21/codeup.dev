@@ -16,6 +16,7 @@ $createTable =
     location VARCHAR(50) NOT NULL,
     date_established DATE NOT NULL,
     area_in_acres DOUBLE(12,2) NOT NULL,
+    description VARCHAR (250) NOT NULL, 
     PRIMARY KEY (id))';
 
 echo 'test';
