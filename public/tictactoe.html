@@ -1,0 +1,114 @@
+<html>
+<head>
+	<title>Tic Tac Toe</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<style type="text/css">
+		h1, p {
+			font: #000000;
+			font-size: 2.5em;
+			color: #CC0000;
+		}
+		
+		#leftSide {
+			z-index: 5;
+			background-color: #FFF;
+		}
+		
+		#rightSide {
+			background: url("img/scoobyback.jpg") no-repeat center;
+			background-size: cover;
+			background-position: relative;
+			height: 731px;
+			bottom: 0;
+			min-width: 700px;
+			max-width: 100%;
+		}
+		#gameboard {
+			width: 546px;
+			height: 660px;
+			/*border: 1px solid black;*/
+			position: absolute;
+			bottom: 0;
+			margin-left: 10%;
+			/*margin-right: 15px;*/
+		}
+		.square {
+			width: 180px;
+			height: 185px;
+			margin: 0;
+			float: left;
+			border: 1px solid black;
+			transition: all 0.5s ease;
+		}
+		.activePlayer {
+			background-color: red;
+		}
+		.activeComp{
+			background-color: blue; 
+		}
+		#container-fluid {
+			
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-3" id="leftSide">
+				<h1>Rick Rack Roe</h1>
+				<p>Select your character</p>
+				<button class="btn btn-primary" id="start">Start</button>
+			</div>
+			<div class="col-md-9">
+				<div id="rightSide">
+					<div id="gameboard">
+						<div class="square" id="sq0"></div>
+						<div class="square" id="sq1"></div>
+						<div class="square" id="sq2"></div>
+						<div class="square" id="sq3"></div>
+						<div class="square" id="sq4"></div>
+						<div class="square" id="sq5"></div>
+						<div class="square" id="sq6"></div>
+						<div class="square" id="sq7"></div>
+						<div class="square" id="sq8"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>		
+
+<script src="js/jquery.js"></script>
+<script type="text/javascript">
+"use strict";
+
+// these functions animate the square.    
+	function animateUserSquare(id){
+		$("#" + id).addClass('activePlayer');
+	}
+
+	function animateCompSquare(id){
+		$("#" + id).addClass('activeComp');
+	}
+
+// this function handles cpu turn
+	function cpuMove(){
+		var sqHole = $('.square')
+		var rand = Math.floor(Math.random()*9);
+		var toAnimate = sqHole[rand];
+		console.log(rand);
+		var id = toAnimate.getAttribute('id');
+		animateCompSquare(id);
+	}
+
+// this function handles the user turn
+	$('.square').click(function(e){
+		$(this).addClass('activePlayer');
+		setTimeout(cpuMove, 1000); 
+		
+	});
+
+
+</script>
+
+</body>
+</html>

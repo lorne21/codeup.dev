@@ -7,29 +7,36 @@ define('DB_PASS', 'password');
 require_once '../db_connect.php';
 require_once '../Input.php';
 
-$error = "";
-
+$error = ""; 
 
 // **ALL OF THIS HANDLES THE POST INFORMATION**
 if(!empty($_POST)){
-	if (Input::has('name') &&
-		Input::has('location') &&
-		Input::has('date_established') && 
-		Input::has('area_in_acres') &&
-		Input::has('description')
-	){
+	$errorMessage = [];
+	try{
+		$name = Input::getString('name');
+	} catch (Exception $e){
+		$errorMessage[] = $e->getMessage(); 
+	}
+	try{
+		$location = Input::getString('location');
+	} catch (Exception $e){
+		$errorMessage[] = $e->getMessage(); 
+	}
+
+	$formatDate = date('Y-m-d', strtotime(Input::get('date_established')));
+
+	if(empty($errorMessage)){
 		$post = $dbc->prepare('INSERT INTO national_parks (name, location, date_established, area_in_acres, description)
 						       VALUES (:name, :location, :date_established, :area_in_acres, :description)');
-
-		$post->bindValue(':name', Input::get('name'), PDO::PARAM_STR);
-		$post->bindValue(':location', $_POST['location'], PDO::PARAM_STR);
-		$post->bindValue(':date_established', $_POST['date_established'], PDO::PARAM_STR);
-		$post->bindValue(':area_in_acres', $_POST['area_in_acres'], PDO::PARAM_STR);
-		$post->bindValue(':description', $_POST['description'], PDO::PARAM_STR);
+		
+		$post->bindValue(':name', $name, PDO::PARAM_STR);
+		$post->bindValue(':location', $location, PDO::PARAM_STR);
+		$post->bindValue(':date_established', $formatDate, PDO::PARAM_STR);
+		$post->bindValue(':area_in_acres', Input::getNumber('area_in_acres'), PDO::PARAM_STR);
+		$post->bindValue(':description', Input::get('description'), PDO::PARAM_STR);
 		$post->execute();
-	} else {
-		$error = "Please enter all of the fields";
-	}
+		$_POST = []; 
+	} 
 }
 
 
@@ -40,7 +47,7 @@ if (empty($_GET)){
 	exit();
 }
 
-$limit = 4;
+$limit = 6;
 $offset = (($_GET['page']-1) * $limit);
 
 $count = $dbc->query("SELECT count(*) FROM national_parks");
@@ -95,9 +102,9 @@ $parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	</style>
 </head>
 <body>
-	<div class="jumbotron">
+	<!-- <div class="jumbotron">
 		<div class="container"></div>
-	</div>
+	</div> -->
  	<h1>National Parks</h1>
 		<table class='table table-striped table-bordered table-hover'>
 			<tr>
@@ -120,36 +127,37 @@ $parks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		<h2 align='center'>Insert a New Park</h2>
 		<h3 align='center'><?= $error ?></h3>
+		<!-- <h3 align='center'><</h3> -->
 		<div>
 			<form method="POST" class="form-horizontal">
 				<div class="form-group">
 				    <label for="name" class="col-sm-2 control-label">Park Name</label>
 				    <div class="col-sm-10">
-				    	<input type="text" class="form-control" id="name" name="name" placeholder="Park Name">
+				    	<input type="text" class="form-control" id="name" name="name" value = "<?= Input::get('name') ?>" placeholder="Park Name">
 				    </div>
 				</div>
 				<div class="form-group">
 				    <label for="location" class="col-sm-2 control-label">Location</label>
 				    <div class="col-sm-10">
-				    	<input type="text" class="form-control" id="location" name="location" placeholder="Park Location">
+				    	<input type="text" require=" " class="form-control" id="location" name="location" value = "<?= Input::get('location') ?>" placeholder="Park Location">
 				    </div>
 				</div>
 		        <div class="form-group">
 				    <label for="date_established" class="col-sm-2 control-label">Date Established</label>
 				    <div class="col-sm-10">
-				    	<input type="text" class="form-control" id="date_established" name="date_established" placeholder="YYYY-MM-DD">
+				    	<input type="date" require=" "class="form-control" id="date_established" name="date_established" value = "<?= Input::get('date_established') ?>"placeholder="YYYY-MM-DD">
 				    </div>
 				</div>
 				<div class="form-group">
 				    <label for="area_in_acres" class="col-sm-2 control-label">Area</label>
 				    <div class="col-sm-10">
-				    	<input type="text" class="form-control" id="area_in_acres" name="area_in_acres" placeholder="Area">
+				    	<input type="number" require=" "class="form-control" id="area_in_acres" name="area_in_acres" value = "<?= Input::get('area_in_acres') ?>"placeholder="Area">
 				    </div>
 				</div>
 		      	<div class="form-group">
 				    <label for="description" class="col-sm-2 control-label">Description</label>
 				    <div class="col-sm-10">
-				    	<input type="text" class="form-control" id="description" name="description" placeholder="Park Name">
+				    	<input type="text" require=" "class="form-control" id="description" name="description" value = "<?= Input::get('description') ?>"placeholder="Park Name">
 				    </div>
 				</div>
 		        <div class="form-group">

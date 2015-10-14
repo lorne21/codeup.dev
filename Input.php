@@ -27,14 +27,46 @@ class Input
     public static function get($key, $default = null)
     {
         if (!empty($_REQUEST[$key])){
-            return self::escape($_REQUEST[$key]); 
+            return trim(static::escape($_REQUEST[$key])); 
         } else {
-            return $default; 
+            return $default;  
         }
     }
 
-    public static function escape(){
+    public static function escape($input){
         return htmlspecialchars(strip_tags($input));
+    }
+
+    public static function getString($key)
+    {
+        $strCheck = static::get($key);
+        if (!is_string($strCheck)){
+            throw new exception("{$key} is not a string");
+        }
+        if (is_numeric($strCheck)){
+            throw new exception("{$key} cannot be a number");
+        }
+        return $strCheck;
+    }
+
+    public static function getNumber($key)
+    {
+        $nbrCheck = static::get($key);
+        if (!is_numeric($nbrCheck)){
+            throw new exception("{$key} is not a number");
+        }
+        return $nbrCheck;
+    }
+
+    public static function getDate($key)
+    {
+        $dateCheck = static::get($key);
+        $format = 'Y-m-d';
+        $date = DateTime::createFromFormat($format, $dateCheck);
+        if (!$date){
+            throw new exception("{$key} is not a valid format");
+        }
+
     }
 
     ///////////////////////////////////////////////////////////////////////////

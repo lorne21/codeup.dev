@@ -1,0 +1,20 @@
+{
+  "name": "Lorne Application",
+  "version": "0.1.0",
+  "homepage": "https://github.com/lorne21/codeup.dev",
+  "authors": [
+    "Lorne <lorne21@gmail.com>"
+  ],
+  "description": "This is a test application",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "bootstrap-sass-official#~3.3.5"
+  }
+}

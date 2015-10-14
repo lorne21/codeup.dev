@@ -1,0 +1,67 @@
+h1 {
+  color: #009900; }
+
+body {
+  background-color: #ccc; }
+
+.box-1 {
+  width: 200px;
+  height: 200px; }
+
+.box-2 {
+  width: 200px;
+  height: 200px; }
+
+.box-3 {
+  width: 200px;
+  height: 200px; }
+
+.puma-icon {
+  background-image: url("images/puma.png"); }
+
+.sea-slug-icon {
+  background-image: url("images/sea-slug.png"); }
+
+.egret-icon {
+  background-image: url("images/egret.png"); }
+
+.salamander-icon {
+  background-image: url("images/salamander.png"); }
+
+p {
+  color: blue; }
+
+.some-class, .another-class {
+  border: 1px solid #f00;
+  background-color: #fdd; }
+
+.another-class {
+  border-width: 3px; }
+
+.main-section {
+  height: 200px; }
+  .main-section h1 {
+    color: red; }
+  .main-section p {
+    margin-bottom: 20px; }
+  .main-section a {
+    color: blue; }
+    .main-section a:hover {
+      text-decoration: none; }
+
+p {
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold; }
+
+span {
+  font-family: Arial;
+  font-size: 20px;
+  font-weight: bold; }
+
+.box {
+  border-color: #000;
+  border-width: 4px;
+  border-style: dashed; }
+
+/*# sourceMappingURL=style.css.map */

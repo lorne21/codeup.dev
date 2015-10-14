@@ -1,0 +1,112 @@
+@import 'colors';
+
+body {
+	background-color: $gray-color;
+}
+
+@for $i from 1 through 3 {
+
+	.box-#{$i} {
+		width: 200px;
+		height: 200px; 
+	}
+}
+
+@each $animal in puma, sea-slug, egret, salamander {
+	.#{$animal}-icon {
+		background-image: url('images/#{$animal}.png');
+	}
+}
+
+$type: ocean;
+p {
+	@if $type == ocean {
+		color: blue;
+	} @else if $type == matador {
+		color: red; 
+	} @else if $type == monster {
+		color: green; 
+	} @else {
+		color: black; 
+	}
+}
+
+.some-class {
+	border: 1px solid #f00;
+	background-color: #fdd;
+}
+
+.another-class {
+	@extend .some-class;
+	border-width: 3px; 
+}
+
+.main-section {
+
+	height: 200px;
+
+	h1 {
+		color: red; 
+	}
+
+	p {
+		margin-bottom: 20px; 
+	}
+
+	a {
+		color: blue; 
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+
+@mixin large-text {
+	font: {
+		family: Arial; 
+		size: 20px; 
+		weight: bold;
+	}
+}
+
+p {
+	@include large-text; 
+}
+
+span {
+	@include large-text; 
+}
+
+@mixin sexy-border($color, $width){
+	border: {
+		color: $color;
+		width: $width;
+		style: dashed; 
+	}
+}
+
+.box {
+	@include sexy-border(#000, 4px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
