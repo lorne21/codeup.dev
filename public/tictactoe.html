@@ -80,33 +80,64 @@
 <script src="js/jquery.js"></script>
 <script type="text/javascript">
 "use strict";
+	var turns = 0; 
 
 // these functions animate the square.    
-	function animateUserSquare(id){
-		$("#" + id).addClass('activePlayer');
-	}
-
 	function animateCompSquare(id){
-		$("#" + id).addClass('activeComp');
+		var that = $("#" + id);
+		if (that.hasClass('activePlayer') || that.hasClass('activeComp')){
+			cpuMove();
+		} else {
+			that.addClass('activeComp');
+			turns += 1; 
+			// console.log(turns);
+		}
 	}
 
 // this function handles cpu turn
 	function cpuMove(){
+		// checkTurn();
 		var sqHole = $('.square')
 		var rand = Math.floor(Math.random()*9);
 		var toAnimate = sqHole[rand];
-		console.log(rand);
+		// console.log(rand);
 		var id = toAnimate.getAttribute('id');
 		animateCompSquare(id);
 	}
 
 // this function handles the user turn
 	$('.square').click(function(e){
+		// checkTurn();
 		$(this).addClass('activePlayer');
+		turns += 1; 
 		setTimeout(cpuMove, 1000); 
 		
 	});
 
+// these functions handle the game win/loss
+	function checkHorizontal(){
+		if (0, 1, 2 || 3, 4, 5 || 6, 7, 8){
+			alert(); 
+		}
+	}
+
+	function checkVertical(){
+		if (0, 3, 6 || 1, 4, 7 || 2, 5, 8){
+			alert(); 
+		}
+	}
+
+	function checkDiagonal(){
+		if (0, 4, 8 || 2, 4, 6){
+			alert(); 
+		}
+	}
+
+	function checkTurn(){
+		if (turns == 9){
+			alert ('This match was a draw');
+		}
+	}
 
 </script>
 
