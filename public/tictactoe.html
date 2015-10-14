@@ -50,6 +50,8 @@
 			
 		}
 	</style>
+
+	<script src="js/jquery.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -77,9 +79,9 @@
 		</div>
 	</div>		
 
-<script src="js/jquery.js"></script>
-<script type="text/javascript">
-"use strict";
+
+<script>
+
 	var turns = 0; 
 
 // these functions animate the square.    
@@ -96,7 +98,7 @@
 
 // this function handles cpu turn
 	function cpuMove(){
-		// checkTurn();
+		gameChecks();
 		var sqHole = $('.square')
 		var rand = Math.floor(Math.random()*9);
 		var toAnimate = sqHole[rand];
@@ -107,36 +109,92 @@
 
 // this function handles the user turn
 	$('.square').click(function(e){
-		// checkTurn();
+		gameChecks();
 		$(this).addClass('activePlayer');
 		turns += 1; 
 		setTimeout(cpuMove, 1000); 
 		
 	});
 
+	
 // these functions handle the game win/loss
 	function checkHorizontal(){
-		if (0, 1, 2 || 3, 4, 5 || 6, 7, 8){
-			alert(); 
+		if (($("#sq0").hasClass('activePlayer') &&
+			 $("#sq1").hasClass('activePlayer') &&
+			 $("#sq2").hasClass('activePlayer')) || 
+			($("#sq3").hasClass('activePlayer') &&
+			 $("#sq4").hasClass('activePlayer') &&
+			 $("#sq5").hasClass('activePlayer')) || 
+			($("#sq6").hasClass('activePlayer') &&
+			 $("#sq7").hasClass('activePlayer') &&
+			 $("#sq8").hasClass('activePlayer'))){
+			alert("You Win!!! G Status"); 
+		} else if (($("#sq0").hasClass('activeComp') &&
+			 $("#sq1").hasClass('activeComp') &&
+			 $("#sq2").hasClass('activeComp')) || 
+			($("#sq3").hasClass('activeComp') &&
+			 $("#sq4").hasClass('activeComp') &&
+			 $("#sq5").hasClass('activeComp')) || 
+			($("#sq6").hasClass('activeComp') &&
+			 $("#sq7").hasClass('activeComp') &&
+			 $("#sq8").hasClass('activeComp'))){
+			alert("Computer Wins!! Loser");
 		}
 	}
 
 	function checkVertical(){
-		if (0, 3, 6 || 1, 4, 7 || 2, 5, 8){
-			alert(); 
+		if (($("#sq0").hasClass('activePlayer') &&
+			 $("#sq3").hasClass('activePlayer') &&
+			 $("#sq6").hasClass('activePlayer')) || 
+			($("#sq1").hasClass('activePlayer') &&
+			 $("#sq4").hasClass('activePlayer') &&
+			 $("#sq7").hasClass('activePlayer')) || 
+			($("#sq2").hasClass('activePlayer') &&
+			 $("#sq5").hasClass('activePlayer') &&
+			 $("#sq8").hasClass('activePlayer'))){
+			alert("You Win!!! G Status"); 
+		} else if (($("#sq0").hasClass('activeComp') &&
+			 $("#sq3").hasClass('activeComp') &&
+			 $("#sq6").hasClass('activeComp')) || 
+			($("#sq1").hasClass('activeComp') &&
+			 $("#sq4").hasClass('activeComp') &&
+			 $("#sq7").hasClass('activeComp')) || 
+			($("#sq2").hasClass('activeComp') &&
+			 $("#sq5").hasClass('activeComp') &&
+			 $("#sq8").hasClass('activeComp'))){
+			alert("Computer Wins!! Loser");
 		}
 	}
 
 	function checkDiagonal(){
-		if (0, 4, 8 || 2, 4, 6){
-			alert(); 
+		if (($("#sq0").hasClass('activePlayer') &&
+			 $("#sq4").hasClass('activePlayer') &&
+			 $("#sq8").hasClass('activePlayer')) || 
+			($("#sq2").hasClass('activePlayer') &&
+			 $("#sq4").hasClass('activePlayer') &&
+			 $("#sq6").hasClass('activePlayer'))){
+			alert("You Win!!! G Status"); 
+		} else if (($("#sq0").hasClass('activeComp') &&
+			 $("#sq4").hasClass('activeComp') &&
+			 $("#sq8").hasClass('activeComp')) || 
+			($("#sq2").hasClass('activeComp') &&
+			 $("#sq4").hasClass('activeComp') &&
+			 $("#sq6").hasClass('activeComp'))){
+			alert("Computer Wins!! Loser");
 		}
 	}
 
 	function checkTurn(){
 		if (turns == 9){
-			alert ('This match was a draw');
+			alert('This match was a draw');
 		}
+	}
+
+	function gameChecks(){
+		checkHorizontal();
+		checkVertical(); 
+		checkDiagonal();
+		checkTurn(); 
 	}
 
 </script>
