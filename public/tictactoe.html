@@ -3,7 +3,7 @@
 	<title>Tic Tac Toe</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<style type="text/css">
-		h1, p {
+		h1 {
 			font: #000000;
 			font-size: 2.5em;
 			color: #CC0000;
@@ -37,7 +37,7 @@
 			height: 185px;
 			margin: 0;
 			float: left;
-			border: 1px solid black;
+			border: 3px solid black;
 			transition: all 0.5s ease;
 		}
 		.activePlayer {
@@ -46,9 +46,7 @@
 		.activeComp{
 			background-color: blue; 
 		}
-		#container-fluid {
-			
-		}
+		
 	</style>
 
 	<script src="js/jquery.js"></script>
@@ -58,8 +56,14 @@
 		<div class="row">
 			<div class="col-md-3" id="leftSide">
 				<h1>Rick Rack Roe</h1>
-				<p>Select your character</p>
+				<p>Select Difficulty:</p>
+				<button class="btn" id="easy" data-level= "easy">Easy</button>
+				<button class="btn" id="medium" data-level= "medium">Medium</button>
+				<br>
+				<br>
+				<p>Begin Game:</p>
 				<button class="btn btn-primary" id="start">Start</button>
+				<button class="btn btn-success" id="replay" style="display:none">Play Again</button>
 			</div>
 			<div class="col-md-9">
 				<div id="rightSide">
@@ -83,8 +87,49 @@
 <script>
 
 	var turns = 0; 
+	var win = 0; 
+	var winTotal = 0; 
+	var level;
 
-// these functions animate the square.    
+// this function handles the start/restart
+	
+	$('#start').click(function(e){
+		coinFlip(); 
+		$('#start').hide();
+		$('#replay').show(); 
+	});
+
+	$('#replay').click(function(e){
+		turns = 0;
+		win = 0; 
+		$('.square').removeClass('activePlayer');
+		$('.square').removeClass('activeComp');
+		coinFlip();
+	});
+
+// these handle the Difficulty
+	$('#easy').click(function(e){
+		level = $(this).data('level');
+		console.log(level);
+	});
+
+	$('#medium').click(function(e){
+		level = $(this).data('level');
+		console.log(level);
+	});
+		
+// this function handles the coin flip
+	function coinFlip(){
+		var rand = Math.floor(Math.random()*2);
+		if (rand == 0){
+			alert("You play first! Select a square to continue.")
+		} else {
+			alert("Computer plays first!");
+			setTimeout(cpuMove, 1000);
+		}
+	}
+
+// this function animates the square.    
 	function animateCompSquare(id){
 		var that = $("#" + id);
 		if (that.hasClass('activePlayer') || that.hasClass('activeComp')){
@@ -96,6 +141,15 @@
 		}
 	}
 
+// this function handles the user turn
+	$('.square').click(function(e){
+		gameChecks();
+		$(this).addClass('activePlayer');
+		turns += 1;
+		setTimeout(cpuMove, 1000); 
+		
+	});
+
 // this function handles cpu turn
 	function cpuMove(){
 		gameChecks();
@@ -104,20 +158,18 @@
 		var toAnimate = sqHole[rand];
 		// console.log(rand);
 		var id = toAnimate.getAttribute('id');
-		animateCompSquare(id);
+		if(win == 0){
+			animateCompSquare(id);
+			gameChecks(); 
+		}
 	}
 
-// this function handles the user turn
-	$('.square').click(function(e){
-		gameChecks();
-		$(this).addClass('activePlayer');
-		turns += 1; 
-		setTimeout(cpuMove, 1000); 
-		
-	});
+// these functions handle the cpu difficulty check
+
+
 
 	
-// these functions handle the game win/loss
+// these functions handle the game win/loss checks
 	function checkHorizontal(){
 		if (($("#sq0").hasClass('activePlayer') &&
 			 $("#sq1").hasClass('activePlayer') &&
@@ -128,6 +180,7 @@
 			($("#sq6").hasClass('activePlayer') &&
 			 $("#sq7").hasClass('activePlayer') &&
 			 $("#sq8").hasClass('activePlayer'))){
+			win = 1; 
 			alert("You Win!!! G Status"); 
 		} else if (($("#sq0").hasClass('activeComp') &&
 			 $("#sq1").hasClass('activeComp') &&
@@ -138,6 +191,7 @@
 			($("#sq6").hasClass('activeComp') &&
 			 $("#sq7").hasClass('activeComp') &&
 			 $("#sq8").hasClass('activeComp'))){
+			win = 1;
 			alert("Computer Wins!! Loser");
 		}
 	}
@@ -152,6 +206,7 @@
 			($("#sq2").hasClass('activePlayer') &&
 			 $("#sq5").hasClass('activePlayer') &&
 			 $("#sq8").hasClass('activePlayer'))){
+			win = 1;
 			alert("You Win!!! G Status"); 
 		} else if (($("#sq0").hasClass('activeComp') &&
 			 $("#sq3").hasClass('activeComp') &&
@@ -162,6 +217,7 @@
 			($("#sq2").hasClass('activeComp') &&
 			 $("#sq5").hasClass('activeComp') &&
 			 $("#sq8").hasClass('activeComp'))){
+			win = 1; 
 			alert("Computer Wins!! Loser");
 		}
 	}
@@ -173,6 +229,7 @@
 			($("#sq2").hasClass('activePlayer') &&
 			 $("#sq4").hasClass('activePlayer') &&
 			 $("#sq6").hasClass('activePlayer'))){
+			win = 1;
 			alert("You Win!!! G Status"); 
 		} else if (($("#sq0").hasClass('activeComp') &&
 			 $("#sq4").hasClass('activeComp') &&
@@ -180,12 +237,14 @@
 			($("#sq2").hasClass('activeComp') &&
 			 $("#sq4").hasClass('activeComp') &&
 			 $("#sq6").hasClass('activeComp'))){
+			win = 1;
 			alert("Computer Wins!! Loser");
 		}
 	}
 
 	function checkTurn(){
 		if (turns == 9){
+			win = 1;
 			alert('This match was a draw');
 		}
 	}
