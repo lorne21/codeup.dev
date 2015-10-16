@@ -1,0 +1,74 @@
+<html>
+<head>
+	<title>Playing with Cards</title>
+
+	<style>
+	#card{
+		height: 300px;
+		width: 240px;
+		margin-bottom: 15px; 
+		border-radius: 3%;
+	}
+
+	#frontimg{
+		height: 228px;
+		width: 167px;
+		border: 1px solid black;
+		margin-left: 35px; 
+		border-radius: 3%;
+		position: relative;
+		background-color: black;
+	}
+
+	#frontleft{
+		height: 30px;
+		width: 30px;
+		border: 1px solid black;
+		margin-top: 2px;
+		margin-left: 2px; 
+		border-radius: 3%;
+		position: relative;
+		background-color: black; 
+	}
+
+	#frontright{
+		height: 30px;
+		width: 30px;
+		border: 1px solid black;
+		margin-left: 205px; 
+		border-radius: 3%;
+		position: relative;
+		background-color: black;
+	}
+
+	.back{
+		background: url(img/paisley3.jpeg) no-repeat center;
+		background-size: cover; 
+		border-radius: 3%;
+	}
+
+	.front{
+		background: url(img/paisley3.jpeg) center;
+		border-radius: 3%;
+	}
+	</style>
+
+	<script src="js/jquery.js"></script>
+	<script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.17/dist/jquery.flip.min.js"></script>
+</head>
+<body>
+	<div id="card">
+		<div class="front">
+			<div id="frontleft"></div>
+			<div id="frontimg"></div>
+			<div id="frontright"></div>
+		</div>
+		<div class="back"></div>
+	</div>
+	<script>
+	$(function($) {
+	  $("#card").flip(); 
+	});
+	</script>
+</body>
+</html>
