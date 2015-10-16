@@ -61,6 +61,9 @@
 
 				<p>Begin Game:</p>
 				<button class="btn btn-primary" id="start">Start</button>
+				<br>
+				<p>Moves Taken: <span id="moves"></span></p>
+				<p>High Score: <span id="score">100</span></p>
 			</div>
 			<div class="col-md-9">
 				<div id="rightSide">
@@ -85,6 +88,9 @@
 
 var numbers = ["1", "2", "3", "4", "5", "6", "7", "8", ""];
 var answer = ["1", "2", "3", "4", "5", "6", "7", "8", ""];
+var checkArray = [];
+var movesTaken = 0; 
+var highScore = 100; 
 
 var square = document.getElementsByClassName('square');
 
@@ -95,6 +101,8 @@ function shuffle(o){
 }
 
 function start(){
+	movesTaken = 0; 
+	$('#moves').html(movesTaken); 
 	shuffle(numbers);
 	console.log(numbers);
 	// this assigns numbers to divs
@@ -108,15 +116,39 @@ function start(){
 	}
 }
 
+// this tracks how many moves you make
+function moves(){
+	movesTaken += 1;
+	$('#moves').html(movesTaken);
+	win();   
+}
+
+// this tracks game win/loss
+function win(){
+	checkArray = [];
+	for (var i = 0; i < square.length; i++){
+		checkArray.push(square[i].innerHTML);
+	}
+	if (checkArray.toString() == answer.toString()){
+		alert("Well done!");
+		if(parseInt($('#moves').html()) < highScore){
+			highScore = parseInt($('#moves').html())
+			$('#score').html(highScore);
+		} 
+	}
+}
+
 $('#start').click(start);
 // these functions handle the behavior of each square
 $("#sq0").click(function(e){
 	if($("#sq1").html() == ""){
 		$("#sq1").html($("#sq0").html()).css('background-color', 'red');
 		$("#sq0").html("").css('background-color', 'black');
+		moves(); 
 	} else if($("#sq3").html() == ""){
 		$("#sq3").html($("#sq0").html()).css('background-color', 'red');
 		$("#sq0").html("").css('background-color', 'black');
+		moves();
 	}
 });
 
@@ -124,12 +156,15 @@ $("#sq1").click(function(e){
 	if($("#sq0").html() == ""){
 		$("#sq0").html($("#sq1").html()).css('background-color', 'red');
 		$("#sq1").html("").css('background-color', 'black');
+		moves();
 	} else if($("#sq2").html() == ""){
 		$("#sq2").html($("#sq1").html()).css('background-color', 'red');
 		$("#sq1").html("").css('background-color', 'black');
+		moves();
 	} else if($("#sq4").html() == ""){
 		$("#sq4").html($("#sq1").html()).css('background-color', 'red');
 		$("#sq1").html("").css('background-color', 'black');
+		moves();
 	} 
 });
 
@@ -137,9 +172,11 @@ $("#sq2").click(function(e){
 	if($("#sq1").html() == ""){
 		$("#sq1").html($("#sq2").html()).css('background-color', 'red');
 		$("#sq2").html("").css('background-color', 'black');
+		moves();
 	} else if($("#sq5").html() == ""){
 		$("#sq5").html($("#sq2").html()).css('background-color', 'red');
 		$("#sq2").html("").css('background-color', 'black');
+		moves();
 	}
 });
 
@@ -147,13 +184,15 @@ $("#sq3").click(function(e){
 	if($("#sq0").html() == ""){
 		$("#sq0").html($("#sq3").html()).css('background-color', 'red');
 		$("#sq3").html("").css('background-color', 'black');
+		moves();
 	} else if($("#sq6").html() == ""){
 		$("#sq6").html($("#sq3").html()).css('background-color', 'red');
 		$("#sq3").html("").css('background-color', 'black');
-	}
-	else if($("#sq4").html() == ""){
+		moves();
+	} else if($("#sq4").html() == ""){
 		$("#sq4").html($("#sq3").html()).css('background-color', 'red');
 		$("#sq3").html("").css('background-color', 'black');
+		moves();
 	}
 });
 
@@ -161,15 +200,19 @@ $("#sq4").click(function(e){
 	if($("#sq1").html() == ""){
 		$("#sq1").html($("#sq4").html()).css('background-color', 'red');
 		$("#sq4").html("").css('background-color', 'black');
+		moves();
 	} else if($("#sq3").html() == ""){
 		$("#sq3").html($("#sq4").html()).css('background-color', 'red');
 		$("#sq4").html("").css('background-color', 'black');
+		moves();
 	} else if($("#sq5").html() == ""){
 		$("#sq5").html($("#sq4").html()).css('background-color', 'red');
 		$("#sq4").html("").css('background-color', 'black');
+		moves();
 	} else if($("#sq7").html() == ""){
 		$("#sq7").html($("#sq4").html()).css('background-color', 'red');
 		$("#sq4").html("").css('background-color', 'black');
+		moves();
 	}
 });
 
@@ -177,12 +220,15 @@ $("#sq5").click(function(e){
 	if($("#sq2").html() == ""){
 		$("#sq2").html($("#sq5").html()).css('background-color', 'red');
 		$("#sq5").html("").css('background-color', 'black');
+		moves();
 	} else if($("#sq4").html() == ""){
 		$("#sq4").html($("#sq5").html()).css('background-color', 'red');
 		$("#sq5").html("").css('background-color', 'black');
+		moves();
 	} else if($("#sq8").html() == ""){
 		$("#sq8").html($("#sq5").html()).css('background-color', 'red');
 		$("#sq5").html("").css('background-color', 'black');
+		moves();
 	}
 });
 
@@ -190,9 +236,11 @@ $("#sq6").click(function(e){
 	if($("#sq3").html() == ""){
 		$("#sq3").html($("#sq6").html()).css('background-color', 'red');
 		$("#sq6").html("").css('background-color', 'black');
+		moves();
 	} else if($("#sq7").html() == ""){
 		$("#sq7").html($("#sq6").html()).css('background-color', 'red');
 		$("#sq6").html("").css('background-color', 'black');
+		moves();
 	}
 });
 
@@ -200,12 +248,15 @@ $("#sq7").click(function(e){
 	if($("#sq4").html() == ""){
 		$("#sq4").html($("#sq7").html()).css('background-color', 'red');
 		$("#sq7").html("").css('background-color', 'black');
+		moves();
 	} else if($("#sq6").html() == ""){
 		$("#sq6").html($("#sq7").html()).css('background-color', 'red');
 		$("#sq7").html("").css('background-color', 'black');
+		moves();
 	} else if($("#sq8").html() == ""){
 		$("#sq8").html($("#sq7").html()).css('background-color', 'red');
 		$("#sq7").html("").css('background-color', 'black');
+		moves();
 	}
 });
 
@@ -213,9 +264,11 @@ $("#sq8").click(function(e){
 	if($("#sq7").html() == ""){
 		$("#sq7").html($("#sq8").html()).css('background-color', 'red');
 		$("#sq8").html("").css('background-color', 'black');
+		moves();
 	} else if($("#sq5").html() == ""){
 		$("#sq5").html($("#sq8").html()).css('background-color', 'red');
 		$("#sq8").html("").css('background-color', 'black');
+		moves();
 	}
 });
 
