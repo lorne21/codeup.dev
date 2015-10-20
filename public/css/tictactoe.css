@@ -1,0 +1,60 @@
+body{
+    background: url("/img/flower_background.jpg") no-repeat;
+    background-size: cover;
+    color: #FEF206;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+.col-md-9 {
+    padding: 0;
+}
+
+#easy{
+    background-color: #FABBC4;
+}
+#medium{
+    background-color: #F38A9B;
+}
+#hard{
+    background-color: #F37785;
+}
+
+#leftSide {
+    z-index: 5;
+    background-color: #FF9003;
+    height: 100%;
+    border-right: 3px solid #F27585;
+}
+
+#rightSide {
+    height: 100%;
+    min-width: 700px;
+    max-width: 100%;
+}
+#gameboard {
+    position: absolute;
+    top: 5%;
+    left: 22%;
+    width: 546px;
+    height: 660px;
+    position: absolute;
+    /*margin-left: auto !important;*/
+    /*margin-right: auto !important;*/
+}
+.square {
+    width: 180px;
+    height: 185px;
+    margin: 0;
+    float: left;
+    border: 3px solid black;
+    transition: all 0.5s ease;
+}
+.activePlayer {
+    background-color: red;
+}
+.activeComp{
+    background-color: blue; 
+}

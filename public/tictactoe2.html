@@ -1,0 +1,44 @@
+<html>
+<head>
+	<title>Tic Tac Toe</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" type="text/css" href="css/tictactoe.css">
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="nav-side-menu col-md-3" id="leftSide">
+				<h1>Rick-Rack-Roe</h1>
+				<p>Select Difficulty:</p>
+				<button class="btn" id="easy" data-level= "easy">Easy</button>
+				<button class="btn" id="medium" data-level= "medium">Medium</button>
+				<button class="btn" id="hard" data-level= "medium">Hard</button>
+				<br>
+				<br>
+				<p>Begin Game:</p>
+				<button class="btn btn-primary" id="start">Start</button>
+				<button class="btn btn-success" id="replay" style="display:none">Play Again</button>
+			</div>
+			<div class="col-md-9">
+				<div id="rightSide">
+					<div id="gameboard">
+						<div class="square" id="sq0"></div>
+						<div class="square" id="sq1"></div>
+						<div class="square" id="sq2"></div>
+						<div class="square" id="sq3"></div>
+						<div class="square" id="sq4"></div>
+						<div class="square" id="sq5"></div>
+						<div class="square" id="sq6"></div>
+						<div class="square" id="sq7"></div>
+						<div class="square" id="sq8"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>		
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/tictactoe.js"></script>
+</body>
+</html>

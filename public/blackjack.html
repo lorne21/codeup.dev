@@ -14,9 +14,9 @@
 		// create an array for cards
 		var cards = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
+		var deck = [];
 		// function to build deck
 		function deckBuilder(){
-			var deck = [];
 			
 			for (var suitKey = 0; suitKey <= suits.length; suitKey++){
 				for (var cardKey = 0; cardKey <= cards.length; cardKey++){
@@ -34,7 +34,7 @@
 		// return true for ace, false for anything else
 		function cardIsAce($card) {
 		  // todo
-		  if (deck[index].number == "A"){
+		  if (this.number == "A"){
 		  	return true; 
 		  } else {
 		  	return false
@@ -45,14 +45,14 @@
 		// face cards are worth 10
 		// numeric cards are worth their value
 		function getCardValue($card) {
-		  if (deck[index].number == "A"){
-		  	deck[index].val("11");
-		  } else if ((deck[index].number == "K") ||
-		  			(deck[index].number == "Q") ||
-		  			(deck[index].number == "J"){
-		  				deck[index].val("11");
+		  if (this.number == "A"){
+		  	this.val("11");
+		  } else if ((this.number == "K") ||
+		  			(this.number == "Q") ||
+		  			(this.number == "J")){
+		  				this.val("10");
 		  } else {
-		  	deck[index].val(deck[index].number);
+		  	this.val(this.number);
 		  }
 		}
 		// get total value for a hand of cards
@@ -63,7 +63,7 @@
 		}
 		// draw a card from the deck into a hand
 		// pass by reference (both hand and deck passed in are modified)
-		function drawCard(&$hand, &$deck) {
+		function drawCard($hand, $deck) {
 		  // todo
 		}
 		// print out a hand of cards
@@ -73,11 +73,11 @@
 		// Dealer: [4 C] [???] Total: ???
 		// or:
 		// Player: [J D] [2 D] Total: 12
-		function echoHand($hand, $name, $hidden = false) {
+		function echoHand($hand, $name, $hidden) {
 		  // todo
 		}
 		// build the deck of cards
-		$deck = buildDeck($suits, $cards);
+		
 		// initialize a dealer and player hand
 		$dealer = [];
 		$player = [];
@@ -88,9 +88,9 @@
 		// echo the player hand
 		// todo
 		// allow player to "(H)it or (S)tay?" till they bust (exceed 21) or stay
-		while (/* todo */) {
+		// while (/* todo */) {
 		  // todo
-		}
+		
 		// show the dealer's hand (all cards)
 		// todo
 		// todo (all comments below)
