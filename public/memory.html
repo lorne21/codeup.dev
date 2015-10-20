@@ -210,14 +210,7 @@
 
 		// this function checks game win
 		function gameCheck(){
-			$(".card").each(function(){
-				var toFlip = $(this)
-				var front = $(this).children('.front');
-				var zee = front.css('z-index');
-				if (zee == "0"){
-					toFlip.flip(false);
-				}
-			});
+			
 		}
 
 		$(".card").flip();
