@@ -428,7 +428,7 @@ a:hover .letter:after {
   height: 100px;
   left: 328px;
   top: 227px;
-  transition: all 0.75s ease;
+  transition: all 1s ease;
   /*border: 2px solid white;*/
   position: absolute;  
 }
@@ -457,6 +457,14 @@ a:hover .letter:after {
 
 .lose{
   color: red;
+}
+
+.wrong{
+  background-color: red; 
+}
+
+.righton{
+  background-color: green;
 }
 
 
