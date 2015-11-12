@@ -1,0 +1,78 @@
+<html>
+<head>
+	<title>Clue</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/clue.css">
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<div class='wrapper'>
+	  <div class='sidebar'>
+	    <div class='title'>
+	      Clue
+	    </div>
+	    <ul class='nav'>
+	      <li>
+	        <a>Play New Game</a>
+	      </li>
+	      <li>
+	        <a class='active'>Instructions</a>
+	      </li>
+	    </ul>
+	  </div> <!--end sidebar-->
+	  <div class='content isOpen banner'>
+	    <a class='buttonMenu'></a>
+	    <div class="container-fluid">
+	    	<div class="row">
+	    	  <div class="col-md-3"></div>
+	    	  <div class="col-md-9">
+	      	    <table></table>
+	    	  </div>
+	    </div>
+	  </div> <!--end content-->
+	</div> <!--end wrapper-->
+
+	<script src="js/jquery.js"></script>
+	<script src="js/clueMap.js"></script>
+	<script>
+
+		// toggles menu
+		$(document).ready(function() {
+		  $('.buttonMenu').on('click', function() {
+		    $('.content').toggleClass('isOpen');
+		  });
+		});
+
+		function moveSquare(array, array2){
+			if(!$(array).hasClass('room')){
+					if(!$(array).hasClass('edge')){
+						$(array2).removeClass("player1");
+				    	$(array).addClass("player1");
+				    }
+				}
+		}
+
+		
+		$(document).keydown(function(e){
+			e.preventDefault(); 
+		    var active = $('.player1'); 
+		    var activeNum = $(active).data('id');
+		    var left = "#sq" + (activeNum - 1); 
+		    var right = "#sq" + (activeNum + 1);
+		    var up =  "#sq" + (activeNum - 24);
+		    var down = "#sq" + (activeNum + 24);
+			if (e.keyCode == 37) { // left
+				moveSquare($(left), active)
+			} else if (e.keyCode == 39) { // right
+			    moveSquare($(right), active)
+			} else if (e.keyCode == 38) { // up
+			    moveSquare($(up), active)
+			} else if (e.keyCode == 40) { // down
+			    moveSquare($(down), active)
+			}
+		})
+	</script>
+</body>
+</html>

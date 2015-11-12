@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title>animations</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<style>
+		#gameboard{
+			height: 600px;
+			width: 600px;
+			position: relative;
+			border: 1px solid black;
+		}
+
+		#jump{
+			height: 100px;
+			width: 100px;
+			position: absolute;
+			border: 1px solid black;
+			bottom: 2px;
+			left: 10px;
+		}
+
+
+	</style>
+
+	<script src="js/jquery.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				<div id="gameboard">
+					<div id="jump">Jump</div>	
+				</div>
+			</div>
+		</div>
+	</div>		
+
+
+<script>
+	$('#jump').click(function(){
+		$(this).animate({
+			bottom : "+=50",
+			left: "+=30"
+		}, 1000, function(){
+			$(this).animate({
+				left: "+=30", 
+				bottom : "-=50"
+			}, 1000);	
+		});
+	})
+
+</script>
+
+</body>
+</html>

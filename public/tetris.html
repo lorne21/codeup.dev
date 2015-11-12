@@ -1,0 +1,131 @@
+<html>
+<head>
+	<title>Tetris</title>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<style>
+		td{
+			border: solid black;
+			height: 20px;
+			width: 20px;
+		}
+
+		.container{
+			padding-top: 85px;
+		}
+
+		.active{
+			background-color: green; 
+		}
+
+		.bottom{
+			background-color: red; 
+		}
+	</style>
+
+</head>
+<body>
+
+	<div class="container">
+		<row>
+			<div class="col-md-8">
+				<table>
+					
+				</table>
+			</div>
+		</row>
+
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+		// function to make game board
+		function gameBoard(){
+			for (var i = 0; i <= 9; i++){
+				$('table').append("<tr class='row" + i + "'></tr>")
+			}
+			$.each($('tr'), function(i, row){
+				for (var i = 0; i <= 9; i++){
+					$(row).append("<td class='column" + i + "'></td>")
+			  	}
+			});
+		}
+		gameBoard();
+
+		// function to animate box through column
+			// currently animating just one box but eventually will have to pass this a shape
+			// rewrite to use settimeout
+	    var drop = 0;
+	    var id = $('.column2');
+	    var rows = $('tr');
+
+		function fallBox(){
+			$(id[drop]).addClass('active');
+			if (drop > 0){
+				$(id[(drop - 1)]).removeClass('active');
+			}
+			drop++;
+			// console.log(drop);
+			if (drop < $(rows).length){
+				id = getClass();
+				console.log(id);
+				clearTimeout(fallBox);
+				setTimeout(fallBox, 1000, id);
+			}
+		}
+
+		function getClass(){
+			var active = $('.active'); 
+			var classes = $(active).attr('class');
+			var classArray = classes.split(" ");
+			var column = classArray[0];
+			var colString = '.' + column;
+			var toAnimate = $(colString);
+			return toAnimate; 
+		}
+		// function dropBox(id){
+		// 	var drop = 0; 
+		// 	var falling = setInterval(function(){
+		// 		$(id[drop]).addClass('active');
+		// 		if (drop > 0){
+		// 			$(id[(drop - 1)]).removeClass('active');
+		// 		}
+		// 		if (drop == $(id).length - 1){
+		// 			clearInterval(falling);
+		// 			$(id[drop]).removeClass('active');
+		// 			$(id[(drop)]).addClass('bottom');
+		// 		} else if ($(id[(drop + 1)]).hasClass('bottom')){
+		// 			clearInterval(falling);
+		// 			$(id[drop]).removeClass('active');
+		// 			$(id[(drop)]).addClass('bottom');
+		// 		}
+		// 		drop++;
+		// 		console.log(drop);
+		// 	}, 1000)
+		// }
+
+		// function to move square
+		$(document).keydown(function(e){
+			e.preventDefault(); 
+		    var active = $('.active'); 
+		    var row = $(active).parent();
+		    var left = $(row).children(".active").prev();
+		    var right = $(row).children(".active").next();
+			if (e.keyCode == 37) { // left
+				$(active).removeClass('active');
+			    $(left).addClass('active');
+
+			} else if (e.keyCode == 39) { // right
+			    $(active).removeClass('active');
+			    $(right).addClass('active');
+			}
+		})
+
+		
+		
+
+	</script>
+
+</body>
+</html>

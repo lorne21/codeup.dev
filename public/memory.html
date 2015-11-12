@@ -146,25 +146,23 @@
 	<script>
 	// $(document).ready(function() {
 
-		var cardImages = document.getElementsByClassName('frontimg');
-		var cards = document.getElementsByClassName('card');
+		var cardImages = $('.frontimg');
+		var cards = $('.card');
 		var score = 0;   
 		var checkArray = []; 
-
-		var images = [
-			"img/daphne.jpg", 
+		var scooby = [
+			"img/daphne.png", 
 			"img/Fred_Jones.gif",
 			"img/ghost.png",
 			"img/Shaggy.gif",
 			"img/snowman.jpg",
 			"img/vampire.jpg",
-			"img/daphne.jpg", 
-			"img/Fred_Jones.gif",
-			"img/ghost.png",
-			"img/Shaggy.gif",
-			"img/snowman.jpg",
-			"img/vampire.jpg"
+			"img/Velma.png", 
+			"img/scoobyghost.png",
+			"img/scooby.png", 
+			"img/ghoul.png"
 		];
+		var images = [];
 
 		// this function shuffles the array
 		function shuffle(o){
@@ -172,8 +170,20 @@
 		    return o;
 		}
 
+		// this function generates the image array
+		function generateImages(array){
+			images = []; 
+			shuffle(array);
+			for (var i =0; i < 6; i++){
+				images.push(array[i]);
+				images.push(array[i]);
+			}
+			return images;
+		}
+
 		// this function generates the cards
 		function generateCards(){
+			generateImages(scooby);
 			shuffle(images);
 			for (var i = 0; i < cards.length; i++){
 				var image = images[i];
