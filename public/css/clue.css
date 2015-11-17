@@ -1,153 +1,32 @@
-@import url("http://fonts.googleapis.com/css?family=Montserrat:400,700");
-@import url("http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css");
-* {
-  margin: 0;
-  padding: 0;
+
+/*BEGIN GAME*/
+
+.container-fluid{
+    padding-top: 85px;
 }
 
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
-html, body {
-  height: 100%;
-}
-
-body {
-  font: 12px/1 'Montserrat', sans-serif;
-  color: #333;
-  background: #333;
-  overflow-x: hidden;
-}
-
-.wrapper {
-  display: flex;
-  min-height: 100%;
-}
-
-.sidebar {
-  position: absolute;
-  width: 220px;
-}
-
-.content {
-  flex: 1;
-  padding: 30px;
-  background: #eee;
-  box-shadow: 0 0 5px black;
-  transform: translate3d(0, 0, 0);
-  transition: transform .3s;
-}
-
-.content.isOpen {
-  transform: translate3d(220px, 0, 0);
-}
-
-.buttonMenu {
-  cursor: pointer;
-}
-
-.buttonMenu:before {
-  content: '\f0c9';
-  font: 42px fontawesome;
-}
-
-/* Demo Navigation */
-.title {
-  font-size: 16px;
-  line-height: 50px;
+h1{
+  font-size: 48px;
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 7px;
-  color: #eee;
-  border-bottom: 1px solid #222;
-  background: #2a2a2a;
-}
-
-.nav li a {
-  position: relative;
-  display: block;
-  padding: 15px 15px 15px 50px;
-  font-size: 12px;
-  color: #eee;
-  border-bottom: 1px solid #222;
-}
-
-.nav li a:before {
-  font: 14px fontawesome;
-  position: absolute;
-  top: 14px;
-  left: 20px;
-}
-
-.nav li:nth-child(1) a:before {
-  content: '\f00a';
-}
-
-.nav li:nth-child(2) a:before {
-  content: '\f012';
-}
-
-.nav li:nth-child(3) a:before {
-  content: '\f0e8';
-}
-
-.nav li:nth-child(4) a:before {
-  content: '\f0c3';
-}
-
-.nav li:nth-child(5) a:before {
-  content: '\f022';
-}
-
-.nav li:nth-child(6) a:before {
-  content: '\f115';
-}
-
-.nav li:nth-child(7) a:before {
-  content: '\f085';
-}
-
-.nav li:nth-child(8) a:before {
-  content: '\f023';
-  left: 23px;
-}
-
-.nav li a:hover {
-  background: #444;
-}
-
-.nav li a.active {
-  box-shadow: inset 5px 0 0 #5b5, inset 6px 0 0 #222;
-  background: #444;
-}
-
-/* Demo Description */
-h1 {
-  margin: 25px 0 15px;
-  font-size: 28px;
-  font-weight: 400;
-}
-
-h2 {
-  font-size: 18px;
-  font-weight: 400;
-  color: #999;
-}
-
-.banner{
-  /*background: url(img/clue/clue2.jpg);*/
-  /*background-size: cover; */
 }
 
 td{
   border: solid black;
-  height: 32px;
-  width: 32px;
+  height: 30px;
+  width: 30px;
 }
 
-table{
-  margin-top: 45px;
+#start:hover{
+  color: red;
+}
+
+.modal-body{
+  background: url('http://megandalbey.com/codepen/css-selectors/paper.jpg') #f2f1e3;
+}
+
+.modal-header{
+  background:url('http://megandalbey.com/codepen/css-selectors/purplewood.jpg') #432d3e;
+  color: white;
 }
 
 .study{
@@ -184,6 +63,6 @@ table{
   background-color: brown;
 }
 
-.player1{
+.activePlayer{
   background-color: red;
 }

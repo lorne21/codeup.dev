@@ -1,0 +1,144 @@
+<html>
+<head>
+	<title>Clue</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/clue.css">
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<div class='wrapper'>
+	  <div class='sidebar'>
+	    <div class='title'>
+	      Clue
+	    </div>
+	    <ul class='nav'>
+	      <li>
+	        <a>Instructions</a>
+	      </li>
+	      <li>
+	        <a id="start">Play New Game</a>
+	      </li>
+	      <li>
+	        <a>View Case File</a>
+	      </li>
+	      <li>
+	        <a>Roll Dice</a>
+	      </li>
+	      <li>
+	        <a>Make Suggestion</a>
+	      </li>
+	      <li>
+	        <a>Make Accusation</a>
+	      </li>
+	      <li>
+	        <a>End Turn</a>
+	      </li>
+	      <li>
+	        <a>Quit</a>
+	      </li>
+	    </ul>
+	  </div> <!--end sidebar-->
+	  <div class='content isOpen banner'>
+	    <a class='buttonMenu'></a>
+	    <div class="container-fluid">
+	    	<div class="row">
+	    	  <div class="col-md-3">
+	    	  	
+	    	  </div>
+	    	  <div class="col-md-9">
+	      	    <table></table>
+	    	  </div>
+	    </div>
+	  </div> <!--end content-->
+	</div> <!--end wrapper-->
+
+	<!-- Modal -->
+	<div class="modal fade" id="newGame" tabindex="-1" role="dialog" 
+	     aria-labelledby="myNewGame" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <!-- Modal Header -->
+	            <div class="modal-header">
+	                <button type="button" class="close" 
+	                   data-dismiss="modal">
+	                        <span aria-hidden="true">&times;</span>
+	                        <span class="sr-only">Close</span>
+	                </button>
+	                <h4 class="modal-title" id="myModalLabel">
+	                    Please Select Number of Players
+	                </h4>
+	            </div>
+	            <!-- Modal Body -->
+	            <div class="modal-body">   
+	                <!-- <form id="manyPlayer"> -->
+	                	<select id="playerSelect" class="selectpicker form-control" data-live-search="true" name="playerSelect">
+					      <option>3</option>
+					      <option>4</option>
+					      <option>5</option>
+					      <option>6</option>
+					    </select>
+	            		<br>
+	            		<select id="characterSelect" class="selectpicker form-control" data-live-search="true" name="characterSelect">	
+					    </select>
+					    <br>
+	                <!-- </form>  -->
+	                  <button data-dismiss="modal" class="btn btn-success" id="begin">Begin Game</button>
+	            </div>
+	            
+	        </div>
+	    </div>
+	</div>
+
+	<script src="js/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+	<script src="js/clueMap.js"></script>
+	<script src="js/clue.js"></script>
+	<script>
+
+		// toggles menu
+		$(document).ready(function() {
+		  $('.buttonMenu').on('click', function() {
+		    $('.content').toggleClass('isOpen');
+		  });
+		});
+
+		// Movement Handlers
+		function moveSquare(direction, current){
+			if($(direction).hasClass('hallway')){
+				$(current).removeClass("activePlayer");
+		    	$(direction).addClass("activePlayer");
+			} else if ($(direction).hasClass('doors')){
+				$(current).removeClass("activePlayer");
+		    	$(direction).addClass("activePlayer");
+				// insert function to handle room here
+			}
+		}
+		
+		$(document).keydown(function(e){
+			e.preventDefault(); 
+		    var active = $('.activePlayer'); 
+		    var activeNum = $(active).data('id');
+		    var left = "#sq" + (activeNum - 1); 
+		    var right = "#sq" + (activeNum + 1);
+		    var up =  "#sq" + (activeNum - 24);
+		    var down = "#sq" + (activeNum + 24);
+			if (e.keyCode == 37) { // left
+				moveSquare($(left), active)
+				e.preventDefault();
+			} else if (e.keyCode == 39) { // right
+			    moveSquare($(right), active)
+				e.preventDefault();
+			} else if (e.keyCode == 38) { // up
+			    moveSquare($(up), active)
+				e.preventDefault();
+			} else if (e.keyCode == 40) { // down
+			    moveSquare($(down), active)
+				e.preventDefault();
+			}
+		})
+		// End Movement Handlers
+	</script>
+</body>
+</html>

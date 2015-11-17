@@ -36,15 +36,6 @@ function borders(array){
 	})
 }
 
-function gameEdge(){
-	borders($('.column1'));
-	borders($('.row1').children());
-	borders($('.column24'));
-	borders($('.row24').children());
-}
-
-
-
 function clueMap(){
 	$.each(specials, function(i, feature){
 		switch(feature){
@@ -152,7 +143,7 @@ function gameBoard(){
 		$(square).attr("id", "sq" + i);
 		$(square).attr( "data-id", i );
 		$(square).addClass('hallway');
-		$('#sq367').addClass("player1");
+		$('#sq367').addClass("activePlayer");
 		// $(square).html(i);
 	})
 }
@@ -161,8 +152,7 @@ function gameBoard(){
 function clueSetUp(){
 	gameBoard(); 
 	clueRooms(); 
-	clueMap();
-	gameEdge(); 
+	clueMap(); 
 }
 
 clueSetUp();

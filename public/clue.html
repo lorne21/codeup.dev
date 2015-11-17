@@ -3,61 +3,177 @@
 	<title>Clue</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/clue.css">
-	<style type="text/css">
-		
+	<link rel="stylesheet" href="css/clueNotepad.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<style>
+	.container-fluid{
+		padding-top: 85px;
+	}
 	</style>
 </head>
 <body>
-	<div class='wrapper'>
-	  <div class='sidebar'>
-	    <div class='title'>
-	      Clue
+
+<div class="container-fluid"> <!--container-->
+	<div class="row"> <!--row-->
+		<div class="col-md-5"><!--col 5-->
+			<div class='leather'><div class='leather-stitch'>
+			  <ul class='rings'><li></li><li></li><li></li></ul>
+			  <ul class='tabs'>
+			    <li id='t-1' class='current'>New Game</li>
+			    <li id='t-2'>Instructions</li>
+			    <li id='t-3'>View Checklist</li>
+			    <li id='t-4'>View Cards</li>
+			    <li id='t-5'>Make Suggestion</li>
+			    <li id='t-6'>Make Accusation</li>
+			    <li id='t-7'>Quit</li>
+			    <li id='t-11'>About</li>
+			  </ul>
+			  
+			<article>
+			  <h1>CLUE  <span><i class="fa fa-search"></i></span></h1>
+			  <section id='s-1' class='current'>
+			    <h2>Welcome to Clue!</h2>
+			    <p>This game is murder</p>
+			    
+			    <p>It is a dark and stormy night at Tudor Mansion.  While enjoying a nice game of hide and seek with some of your buddy, John Boddy's friends, the power goes out. When the lights come back on, everyone reconvenes, only John isn't around.  Everyone moves to the hallway and....John has been murdered and his body's been moved!!!! You give the shifty eye to everyone there. Someone (maybe even you) is hiding something. Not wanting to be the next victim and not trusting one another, you all spread out in search of clues.  Who did it? Where? And with what? Find out or you may be next!</p>
+			    <br>
+			    <br>
+			    <div id="start"><h3>PLAY</h3></div>
+			    
+			  </section>
+			  
+			  <section id='s-2'>
+			    <h2>Instructions</h2>
+			    <p>How to Play</p>
+			    
+			  </section>
+			  
+			  <section id='s-3'>
+			    <h2>Case File</h2>
+			    <p>Narrow down your suspects</p>
+			    <div class="checklist">
+			    	<label>Suspects:</label>
+			    	<ol id="suspects"></ol>
+			    	<label>Weapons:</label>
+			    	<ol id="weapons"></ol>
+			    	<label>Rooms:</label>
+			    	<ol id="locations"></ol>
+			    </div>
+			    
+			    
+			  </section>
+
+			  <section id='s-4'>
+			    <h2>Your Cards</h2>
+			    <p>Make sure you mark your checklist. You will also need these to show other players</p>
+			    
+			  </section>
+			  
+			  <section id='s-5'>
+			    <h2>Make A Suggestion</h2>
+			    <p>Put out a theory on who done it</p>
+			    
+			  </section>
+			  
+			  <section id='s-6'>
+			    <h2>Make Accusation</h2>
+			    <p>If you know who did it, you're in the right place</p>
+			  </section>
+			  
+			  <section id='s-7'>
+			    <h2>Quit</h2>
+			    <p>Tired of playing?</p>
+			  </section>
+			  
+			  <section id='s-11'>
+			    <h2>About</h2>
+			    <p></p>
+			    <p>I built this game using solely Bootstrap, JavaScript and jQuery. I decided to build Clue because I'm a bit nostalgic, but also because it required a lot of logic that I wanted to work through.  It has been an awesome challenge and I hope you enjoy it!</p>
+			    <p>The patterns used on the background, paper, and leather are modified from <a href='http://subtlepatterns.com'/>Subtle Patterns</a>. The notepad is based on a theme from <a href='http://codepen.io/pa7/'>http://Patrick Wied</a>. The flashlight is based on a theme from <a href='http://megandalbey.com'>http://megandalbey.com</a>. Other than that, the rest is mine.  If you like my game, feel free to view more of my work at <a href='http://forlorne.us'>http://forlorne.us</a></p>
+			  </section>
+			</article>
+			</div></div><!--end leather-->
+		</div><!--end col 5-->
+
+		<div class="col-md-7">
+			<table></table>
+		</div>
+
+	</div> <!--end row-->
+</div><!--end container-->
+
+<div class="modal fade" id="newGame" tabindex="-1" role="dialog" 
+	     aria-labelledby="myNewGame" aria-hidden="true">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <!-- Modal Header -->
+	            <div class="modal-header">
+	                <button type="button" class="close" 
+	                   data-dismiss="modal">
+	                        <span aria-hidden="true">&times;</span>
+	                        <span class="sr-only">Close</span>
+	                </button>
+	                <h4 class="modal-title" id="myModalLabel">
+	                    Get Started
+	                </h4>
+	            </div>
+	            <!-- Modal Body -->
+	            <div class="modal-body">   
+	                <!-- <form id="manyPlayer"> -->
+	                	<label>Please Select Number of Players</label>
+	                	<select id="playerSelect" class="selectpicker form-control" data-live-search="true" name="playerSelect">
+					      <option>3</option>
+					      <option>4</option>
+					      <option>5</option>
+					      <option>6</option>
+					    </select>
+	            		<br>
+	            		<label>Please Select Your Character</label>
+	            		<select id="characterSelect" class="selectpicker form-control" data-live-search="true" name="characterSelect">	
+					    </select>
+					    <br>
+	                <!-- </form>  -->
+	                  <button data-dismiss="modal" class="btn btn-success" id="begin">Begin Game</button>
+	            </div>
+	            
+	        </div>
 	    </div>
-	    <ul class='nav'>
-	      <li>
-	        <a>Play New Game</a>
-	      </li>
-	      <li>
-	        <a class='active'>Instructions</a>
-	      </li>
-	    </ul>
-	  </div> <!--end sidebar-->
-	  <div class='content isOpen banner'>
-	    <a class='buttonMenu'></a>
-	    <div class="container-fluid">
-	    	<div class="row">
-	    	  <div class="col-md-3"></div>
-	    	  <div class="col-md-9">
-	      	    <table></table>
-	    	  </div>
-	    </div>
-	  </div> <!--end content-->
-	</div> <!--end wrapper-->
+	</div>
+
+
+
+
+
 
 	<script src="js/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 	<script src="js/clueMap.js"></script>
+	<script src="js/clue.js"></script>
 	<script>
-
-		// toggles menu
-		$(document).ready(function() {
-		  $('.buttonMenu').on('click', function() {
-		    $('.content').toggleClass('isOpen');
-		  });
+		// Tab Handlers
+		$('.tabs li').click(function(){
+		  id = ($(this).attr('id')).split('-');
+		  $('.tabs li').removeClass('current');
+		  $('section').removeClass('current');
+		  $('#t-'+id[1]).addClass('current');
+		  $('#s-'+id[1]).addClass('current');
 		});
 
-		function moveSquare(array, array2){
-			if(!$(array).hasClass('room')){
-					if(!$(array).hasClass('edge')){
-						$(array2).removeClass("player1");
-				    	$(array).addClass("player1");
-				    }
-				}
+		// Movement Handlers
+		function moveSquare(direction, current){
+			if($(direction).hasClass('hallway')){
+				$(current).removeClass("activePlayer");
+		    	$(direction).addClass("activePlayer");
+			} else if ($(direction).hasClass('doors')){
+				$(current).removeClass("activePlayer");
+		    	$(direction).addClass("activePlayer");
+				// insert function to handle room here
+			}
 		}
-
 		
 		$(document).keydown(function(e){
 			e.preventDefault(); 
-		    var active = $('.player1'); 
+		    var active = $('.activePlayer'); 
 		    var activeNum = $(active).data('id');
 		    var left = "#sq" + (activeNum - 1); 
 		    var right = "#sq" + (activeNum + 1);
@@ -65,14 +181,19 @@
 		    var down = "#sq" + (activeNum + 24);
 			if (e.keyCode == 37) { // left
 				moveSquare($(left), active)
+				e.preventDefault();
 			} else if (e.keyCode == 39) { // right
 			    moveSquare($(right), active)
+				e.preventDefault();
 			} else if (e.keyCode == 38) { // up
 			    moveSquare($(up), active)
+				e.preventDefault();
 			} else if (e.keyCode == 40) { // down
 			    moveSquare($(down), active)
+				e.preventDefault();
 			}
 		})
+		// End Movement Handlers
 	</script>
 </body>
 </html>
