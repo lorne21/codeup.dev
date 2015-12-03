@@ -20,6 +20,10 @@ td{
   color: red;
 }
 
+#sugg:hover{
+  color: red;
+}
+
 .modal-body{
   background: url('http://megandalbey.com/codepen/css-selectors/paper.jpg') #f2f1e3;
 }
@@ -29,14 +33,61 @@ td{
   color: white;
 }
 
-.study{
-  /*background-color: green; */
+#gameLog{
+  height: 345px;
+  width: 400px;
+  border: solid brown; 
+  color: white; 
+  padding: 15px;
+  background-color: black; 
+  overflow: scroll;
 }
 
-.library{
-  /*background-color: blue; */
-
+#suggestion{
+  height: 345px;
+  width: 400px;   
+  overflow: scroll;
 }
+
+
+#overlay { 
+  position:absolute; 
+  left:0; 
+  top:0; 
+  width:740px;
+  height:740px; 
+  border: solid;
+  background:black; 
+  display: none;
+}
+#excluder { 
+  width:200px;
+  height:200px;
+  position:absolute; 
+  border-radius:100%; 
+  transform:translate(0,0);
+  box-shadow:0 0 20px 25px black inset, 0 0 2px 2px black inset, 0 0 2px 2px black inset, 0 0 2px 2px black inset, 0 0 2px 2px black inset, 0 0 2px 2px black inset;  
+  background:url(/img/clue/library3.jpeg) no-repeat;  
+  display: none; 
+}
+
+.dice{
+  height: 100px;
+  width: 100px;
+  background-color: lightyellow;
+  text-align: center;
+  font-size: 40px; 
+  padding-top: 25px; 
+  border: 1px solid black;
+  margin: 10px;
+  border-radius: 7px;
+  display: inline-block; 
+}
+
+#roll{
+  margin-left: 10px;
+}
+
 .hallway{
   background-color: lightyellow; 
 }
@@ -51,12 +102,11 @@ td{
 
 .gameBorder{
   opacity: 0;
-  /*background-color: black; */
   border: none;
 }
 
 .doors{
-  background-color: lightblue; 
+  background-color: #ADD8E6; 
 }
 
 .start{
@@ -64,5 +114,29 @@ td{
 }
 
 .activePlayer{
-  background-color: red;
+  /*background-color: red;*/
+}
+
+.scarlet{
+  background-color: #cc0000;
+}
+
+.white{
+  background-color: lightgrey;
+}
+
+.green{
+  background-color: darkgreen;
+}
+
+.mustard{
+  background-color: #FFDB58;
+}
+
+.peacock{
+  background-color: darkblue;
+}
+
+.plum{
+  background-color: purple;
 }

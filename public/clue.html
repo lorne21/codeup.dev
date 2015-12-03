@@ -5,11 +5,6 @@
 	<link rel="stylesheet" href="css/clue.css">
 	<link rel="stylesheet" href="css/clueNotepad.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<style>
-	.container-fluid{
-		padding-top: 85px;
-	}
-	</style>
 </head>
 <body>
 
@@ -21,10 +16,12 @@
 			  <ul class='tabs'>
 			    <li id='t-1' class='current'>New Game</li>
 			    <li id='t-2'>Instructions</li>
+			    <li id='t-8'>Roll Dice</li>
+			    <li id='t-9'>Game Log</li>
 			    <li id='t-3'>View Checklist</li>
-			    <li id='t-4'>View Cards</li>
 			    <li id='t-5'>Make Suggestion</li>
 			    <li id='t-6'>Make Accusation</li>
+			    <li id='t-10'>End Turn</li>
 			    <li id='t-7'>Quit</li>
 			    <li id='t-11'>About</li>
 			  </ul>
@@ -37,7 +34,7 @@
 			    
 			    <p>It is a dark and stormy night at Tudor Mansion.  While enjoying a nice game of hide and seek with some of your buddy, John Boddy's friends, the power goes out. When the lights come back on, everyone reconvenes, only John isn't around.  Everyone moves to the hallway and....John has been murdered and his body's been moved!!!! You give the shifty eye to everyone there. Someone (maybe even you) is hiding something. Not wanting to be the next victim and not trusting one another, you all spread out in search of clues.  Who did it? Where? And with what? Find out or you may be next!</p>
 			    <br>
-			    <br>
+			    <p>Click play if you want to get started. Or, if you want to learn the rules, click the instructions tab.</p>
 			    <div id="start"><h3>PLAY</h3></div>
 			    
 			  </section>
@@ -45,6 +42,26 @@
 			  <section id='s-2'>
 			    <h2>Instructions</h2>
 			    <p>How to Play</p>
+			    
+			  </section>
+
+			  <section id='s-8'>
+			    <h2>Roll the Dice</h2>
+			    <p>Then explore the mansion</p>  
+                <div id="die1" class="dice">1</div>
+				<div id="die2" class="dice">3</div>
+				<button id="roll" class="btn btn-warning">Roll Dice</button>
+				<br>
+				<h3>Moves Available: <span id="movesAvail"><span><h3>
+			    
+			  </section>
+
+			  <section id='s-9'>
+			    <h2>Game Log</h2>
+			    <p>This tracks all of the moves in the game</p>
+			    <div id="gameLog">
+			    	<p>The Mystery Begins...</p>	
+			    </div>
 			    
 			  </section>
 			  
@@ -63,21 +80,26 @@
 			    
 			  </section>
 
-			  <section id='s-4'>
-			    <h2>Your Cards</h2>
-			    <p>Make sure you mark your checklist. You will also need these to show other players</p>
-			    
-			  </section>
 			  
 			  <section id='s-5'>
 			    <h2>Make A Suggestion</h2>
 			    <p>Put out a theory on who done it</p>
+			    <div id="suggestion">
+			    	<p>Here is where you make a suggestion.  Your choices will be dependent on the cards that you currently have or have seen.  The room of choice will always be the room you are in.  If you would like to choose a different room, you will have to travel to that room. Once a suggestion has been made, the next player will check the cards that they have.  If they have one of the cards that you suggest, it will be shown to you and your checklist will be updated. Once you have been shown a card, no other players have do disprove your suggestion.  If the next player doesn't have a card, your suggestion passes to next player and so on. You will be required to choose a card to show to your opposition when they make a suggestion, should your turn be next or the player before you has none of the cards.  If you choose to make a suggestion or accusation in the future, the choices you have remaining will be reflected.  Any cards shown to you will show up in your checklist as orange.  Use suggestions to narrow down the potential suspects to figure out who was murdered.  Remember though, there are others trying to solve the murder as well.  Be smart, cunning and fast.</p>
+			    </div>  
+			    <div id="sugg"><h3>Who do you think did it?</h3></div>
 			    
 			  </section>
 			  
 			  <section id='s-6'>
 			    <h2>Make Accusation</h2>
 			    <p>If you know who did it, you're in the right place</p>
+			  </section>
+
+			  <section id='s-10'>
+			    <h2>End Turn</h2>
+			    <p>It might be your last!!!!</p>
+			    <!-- ENTER BUTTON HERE -->
 			  </section>
 			  
 			  <section id='s-7'>
@@ -88,14 +110,18 @@
 			  <section id='s-11'>
 			    <h2>About</h2>
 			    <p></p>
-			    <p>I built this game using solely Bootstrap, JavaScript and jQuery. I decided to build Clue because I'm a bit nostalgic, but also because it required a lot of logic that I wanted to work through.  It has been an awesome challenge and I hope you enjoy it!</p>
-			    <p>The patterns used on the background, paper, and leather are modified from <a href='http://subtlepatterns.com'/>Subtle Patterns</a>. The notepad is based on a theme from <a href='http://codepen.io/pa7/'>http://Patrick Wied</a>. The flashlight is based on a theme from <a href='http://megandalbey.com'>http://megandalbey.com</a>. Other than that, the rest is mine.  If you like my game, feel free to view more of my work at <a href='http://forlorne.us'>http://forlorne.us</a></p>
+			    <p>I built this game using solely some custom CSS, Bootstrap, JavaScript and jQuery. I decided to build Clue because I'm a bit nostalgic, but also because it required a lot of logic that I wanted to work through.  It has been an awesome challenge and I hope you enjoy it!</p>
+			    <p>The patterns used on the background, paper, and leather are modified from <a href='http://subtlepatterns.com'/>Subtle Patterns</a>. The notepad is based on a theme from <a href='http://megandalbey.com'>http://megandalbey.com</a>. The flashlight is based on a theme from <a href='http://codepen.io/pa7/'>http://Patrick Wied</a>. Other than that, the rest is mine.  If you like my game, feel free to view more of my work at <a href='http://forlorne.us'>http://forlorne.us</a></p>
 			  </section>
 			</article>
 			</div></div><!--end leather-->
 		</div><!--end col 5-->
 
 		<div class="col-md-7">
+			<!-- <div id="clueRoom"> -->
+				<div id="overlay"></div>
+				<div id="excluder"></div>
+			<!-- </div> -->
 			<table></table>
 		</div>
 
@@ -104,96 +130,86 @@
 
 <div class="modal fade" id="newGame" tabindex="-1" role="dialog" 
 	     aria-labelledby="myNewGame" aria-hidden="true">
-	    <div class="modal-dialog">
-	        <div class="modal-content">
-	            <!-- Modal Header -->
-	            <div class="modal-header">
-	                <button type="button" class="close" 
-	                   data-dismiss="modal">
-	                        <span aria-hidden="true">&times;</span>
-	                        <span class="sr-only">Close</span>
-	                </button>
-	                <h4 class="modal-title" id="myModalLabel">
-	                    Get Started
-	                </h4>
-	            </div>
-	            <!-- Modal Body -->
-	            <div class="modal-body">   
-	                <!-- <form id="manyPlayer"> -->
-	                	<label>Please Select Number of Players</label>
-	                	<select id="playerSelect" class="selectpicker form-control" data-live-search="true" name="playerSelect">
-					      <option>3</option>
-					      <option>4</option>
-					      <option>5</option>
-					      <option>6</option>
-					    </select>
-	            		<br>
-	            		<label>Please Select Your Character</label>
-	            		<select id="characterSelect" class="selectpicker form-control" data-live-search="true" name="characterSelect">	
-					    </select>
-					    <br>
-	                <!-- </form>  -->
-	                  <button data-dismiss="modal" class="btn btn-success" id="begin">Begin Game</button>
-	            </div>
-	            
-	        </div>
-	    </div>
-	</div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Get Started
+                </h4>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">   
+                <!-- <form id="manyPlayer"> -->
+                	<label>Please Select Number of Players</label>
+                	<select id="playerSelect" class="selectpicker form-control" data-live-search="true" name="playerSelect">
+				      <option>3</option>
+				      <option>4</option>
+				      <option>5</option>
+				      <option>6</option>
+				    </select>
+            		<br>
+            		<label>Please Select Your Character</label>
+            		<select id="characterSelect" class="selectpicker form-control" data-live-search="true" name="characterSelect">	
+				    </select>
+				    <br>
+                <!-- </form>  -->
+                  <button data-dismiss="modal" class="btn btn-success" id="begin">Begin Game</button>
+            </div>
+            
+        </div>
+    </div>
+</div>
 
-
+<div class="modal fade" id="sugAcc" tabindex="-1" role="dialog" 
+	     aria-labelledby="mySugAcc" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="mySugAcc">
+                    Make Suggestion
+                </h4>
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">   
+        		<label id='charsugg'>Suggest a Character</label>
+        		<select id="suggChar" class="selectpicker form-control" data-live-search="true" name="suggChar">	
+			    </select>
+			    <br>
+			    <label id='weapsugg'>Suggest a Weapon</label>
+        		<select id="suggWeap" class="selectpicker form-control" data-live-search="true" name="suggWeap">	
+			    </select>
+			    <br>
+			    <label id='roomsugg'>Suggest a Room</label>
+        		<select id="suggRoom" class="selectpicker form-control" data-live-search="true" name="suggRoom">	
+			    </select>
+			    <br>
+                <button data-dismiss="modal" class="btn btn-success" id="suggSub">Make Suggestion</button>
+            </div>
+            
+        </div>
+    </div>
+</div>
 
 
 
 
 	<script src="js/jquery.js"></script>
+	<script src="js/jquery-ui.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 	<script src="js/clueMap.js"></script>
 	<script src="js/clue.js"></script>
-	<script>
-		// Tab Handlers
-		$('.tabs li').click(function(){
-		  id = ($(this).attr('id')).split('-');
-		  $('.tabs li').removeClass('current');
-		  $('section').removeClass('current');
-		  $('#t-'+id[1]).addClass('current');
-		  $('#s-'+id[1]).addClass('current');
-		});
-
-		// Movement Handlers
-		function moveSquare(direction, current){
-			if($(direction).hasClass('hallway')){
-				$(current).removeClass("activePlayer");
-		    	$(direction).addClass("activePlayer");
-			} else if ($(direction).hasClass('doors')){
-				$(current).removeClass("activePlayer");
-		    	$(direction).addClass("activePlayer");
-				// insert function to handle room here
-			}
-		}
-		
-		$(document).keydown(function(e){
-			e.preventDefault(); 
-		    var active = $('.activePlayer'); 
-		    var activeNum = $(active).data('id');
-		    var left = "#sq" + (activeNum - 1); 
-		    var right = "#sq" + (activeNum + 1);
-		    var up =  "#sq" + (activeNum - 24);
-		    var down = "#sq" + (activeNum + 24);
-			if (e.keyCode == 37) { // left
-				moveSquare($(left), active)
-				e.preventDefault();
-			} else if (e.keyCode == 39) { // right
-			    moveSquare($(right), active)
-				e.preventDefault();
-			} else if (e.keyCode == 38) { // up
-			    moveSquare($(up), active)
-				e.preventDefault();
-			} else if (e.keyCode == 40) { // down
-			    moveSquare($(down), active)
-				e.preventDefault();
-			}
-		})
-		// End Movement Handlers
-	</script>
+	
 </body>
 </html>

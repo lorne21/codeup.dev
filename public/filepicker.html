@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>Photos</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript" src="//api.filepicker.io/v2/filepicker.js"></script>
+</head>
+<body>
+	
+	<button class="filepicker">pick files</button>
+
+	<p></p>
+
+
+	<script>
+	filepicker.setKey("AQcUKaMfhR0OqwagCQjtiz");
+
+	$("button").click(function(){
+		filepicker.pickMultiple(
+		  {
+		    mimetype: 'image/*',
+		    maxFiles: 8,
+		    imageQuality: 80,
+    		imageDim: [768, 485]
+		  },
+		  function(Blobs){
+		    console.log(JSON.stringify(Blobs));
+		  },
+		  function(error){
+		 	// console.log(JSON.stringify(error)); - print errors to console
+		  }
+
+		);
+	})
+	
+	</script>
+</body>
+</html>

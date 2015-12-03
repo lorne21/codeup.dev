@@ -143,7 +143,7 @@ function gameBoard(){
 		$(square).attr("id", "sq" + i);
 		$(square).attr( "data-id", i );
 		$(square).addClass('hallway');
-		$('#sq367').addClass("activePlayer");
+		// $('#sq120').addClass("activePlayer");
 		// $(square).html(i);
 	})
 }

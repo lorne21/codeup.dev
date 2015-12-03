@@ -6,7 +6,9 @@
 }
 
 body {
-  background:url('http://megandalbey.com/codepen/css-selectors/purplewood.jpg') #432d3e;
+  /*background:url('http://megandalbey.com/codepen/css-selectors/purplewood.jpg') #432d3e;*/
+  background: url('/img/clue/stormynight2.jpg') no-repeat center; 
+  background-size: cover; 
   font-family: 'Typewriter';
 }
 
