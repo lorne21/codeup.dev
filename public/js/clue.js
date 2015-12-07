@@ -113,6 +113,8 @@ var cardRooms = [
 var playerArray = []; 
 var winArray = [];
 var guessArray = []; 
+var precard = characters.concat(weapons);
+var everycard = precard.concat(cardRooms); 
 
 
 var Player = function(name, type) {
@@ -123,6 +125,7 @@ var Player = function(name, type) {
   this.active = false;  
   this.hasRolled = false; 
   this.inRoom = ""; 
+  this.suggestionArray = []; 
 }
 
 // this function shuffles an array
@@ -174,6 +177,7 @@ function dealCards(array){
 		addTo.push(card);
 		m++; 
 	})
+	array.push(forWin);
 }
 
 function generateCheckbox(){
@@ -230,7 +234,6 @@ function startSquares(){
 
 function startColors(){
 	playerArray.forEach(function(player){
-		console.log(player);
 		switch(player.name){
 			case 'Professor Plum': 
 				$(player.startSquare).addClass('plum');
@@ -283,40 +286,92 @@ function displayRoom(){
 
 // }
 
-function suggestion(){
-	var charChoice = $('#charsugg').val();
-	var weapChoice = $('#weapsugg').val();
-	var roomChoice = $('#roomsugg').val();
-	var suggArray = [charChoice, weapChoice, roomChoice];
-
-
+function suggestion(){   
+	var charChoice = $('#suggChar').val().toLowerCase();
+	var weapChoice = $('#suggWeap').val().toLowerCase();
+	var roomChoice = $('#suggRoom').val().toLowerCase();
+	var allChoice = [charChoice, weapChoice, roomChoice];
+	console.log(allChoice);
+	suggArrayMaker(charChoice);
+	suggArrayMaker(weapChoice);
+	suggArrayMaker(roomChoice);	
 }
 
-// function suggestionCheck(choice){ 
-// 	playerArray.forEach(function(player){
-// 		if (!player.active){ 
-// 			var playCards = player.cards;
-// 			playCards.forEach(function(card){
-// 				if(choice )
-// 			}) 
 
-// 		}
-// 	})
-// }
+function suggArrayMaker(choice){ 
+	playerArray.forEach(function(player){
+		if (!player.active){
+			var playerCards = player.cards;
+			var wherePush = player.suggestionArray;
+			playerCards.forEach(function(card){
+				if (card.name.toLowerCase() == choice){
+					wherePush.push(card); 
+				}
+			})	
+		}
+	}) 
+}
+
+function nextPlayer(){ 
+	// use interval duh 
+	var playerInd; 
+	if (turn == playerArray.length - 1){
+		playerInd = 0; 
+	} else {
+		playerInd = turn + 1; 
+	}
+	function checkPlayer(id){
+		var thisGuy = playerArray[id];
+		if (thisGuy.suggestionArray.length > 0){
+			return playerArray[id];
+		} else {
+			id++;
+			checkPlayer(id);  
+		}
+	}
+	var withCards = checkPlayer(playerInd);  	
+	return withCards; 
+}
+
+function suggestionChooser(){
+	var playerToChoose = nextPlayer(); 
+	console.log(playerToChoose);
+	var cpuChoice; 
+	if (playerToChoose.type = "cpu"){
+		if (playerToChoose.suggestionArray.length > 1){
+			var rand = Math.floor(Math.random()*2);
+			cpuChoice = playerToChoose.suggestionArray[rand]; 
+			return cpuChoice; 
+		} else {
+			cpuChoice = playerToChoose.suggestionArray[0]; 
+			return cpuChoice; 
+		}
+	} else if (playerToChoose.type = "user"){
+		// INSERT FUNCTION USER CHOOSE CARD TO SHOW HERE
+	}
+}
+
 
 function getSuggCats(){
 	var huplayer = playerArray[0];
 	huplayer.allcards = huplayer.cards.concat(huplayer.oppcards);
 	var huCards = huplayer.allcards;
-	huCards.forEach(function(card){
-		if ($.inArray(card, characters) != -1){
-			$('#suggChar').append("<option>" + card.name + "</option>"); 
+	shuffle(characters);
+	shuffle(weapons);
+	$('#suggChar').html("");
+	$('#suggWeap').html(""); 
+	$('#suggRoom').html("");
+	characters.forEach(function(character){
+		if ($.inArray(character, huCards) == -1){
+			$('#suggChar').append("<option>" + character.name + "</option>"); 
 		}
-		if ($.inArray(card, weapons) != -1){
-			$('#suggWeap').append("<option>" + card.name + "</option>"); 
-		}		
 	})
-	$('#suggRoom').append("<option>" + huplayer.inRoom + "</option>")
+	weapons.forEach(function(weapon){
+		if ($.inArray(weapon, huCards) == -1){
+			$('#suggWeap').append("<option>" + weapon.name + "</option>"); 
+		}
+	})
+	$('#suggRoom').append("<option>" + huplayer.inRoom + "</option>");
 }
 
 
@@ -366,69 +421,7 @@ function logThis(play){
 	}
 
 }
-// Gameplay
 
-//create function to check location of player: run diff functions based on that
-
-	// roll dice x
-	// track player squares moved x
-	// gamelog update x
-		// make log functions and styles
-		// 	one for player turn
-		// 	one for player die roll x
-		// 	one for player enter room x
-		// 	one for player use secret passage
-		// 	one for player suggestion
-		// 	one for player accusation
-	// store dice value in movesAllowed x 
-	// if movesAllowed > 0....
-		// must run a check
-			// if player is in hallway, turn ends, squares moved = 0
-			// if player enters door, moves = 0, inroom class
-				//if squares moved > 0, run inRoom function
-			// if player is inRoom and wants to leave
-				// create function to determine doors if multiple
-				// ask what door to leave
-				// move active player to that door
-				// roll dice
-	//if player is inRoom to start turn
-		//ask if they want to leave
-		//if there's a secret door and they have said door in array, ask if they 
-		// want to use
-			// if yes, re-run inRoom function at new location
-
-// 1. randomly decide who goes first
-		// - load players onto start buttons
-// 2. if turn = activeplayer then run playerturn
-// 3. if player not inRoom, load button to roll dice, remove button. else,
-	// load button to use secret passage if exists, begin room functionality
-// 4. if dice, moves allowed = dice total
-// 5. move character one space per move
-// 6. if player is still in hallway, load button to end turn
-// 7. if player enters a door, moves = 0, begin room functionality
-// 8. if inRoom: 
-	// a) load buttons to make suggestion, make accusation, end turn
-
-// 9. Suggestion: 
-	// a) select weapon, room will be inRoom class, select character
-	// b) on submit, for each player, if they have one or more of the cards
-	// pick random card and show to active player
-	// c) push new card into card array and update detective notebook
-			// -cpu will need its own array for a checklist. need to make function for it
-	// d) at beginning, remove suggestion button
-
-// 10. Accusation:
-	// a) select weapon, room, character
-	// b) on submit, check if accArray == winArray
-	// c) if right, game win. wrong, game lose
-	// d) load new game button
-
-// Challenging Part
-// 1. Making logic for computer move
-// 2. pick room
-// 3. get door (if more than one get closest)
-// 4. determine if it's less moves to go horizontal or vertical
-	
 
 // Game Setup
 $(document).ready(function() {
@@ -464,11 +457,19 @@ $(document).ready(function() {
 	});
 });
 
-$("#sugg").click(function(e) {
-	getSuggCats();
-	$('#sugAcc').modal('show');
-})
+// if(playerArray[0].inRoom != ""){
+	$("#sugg").click(function(e) {
+		getSuggCats();
+		$('#sugAcc').modal('show');
+	})
+// }
 
+$("#suggSub").click(function(e){
+	suggestion(); 
+	var cpuPlayerChoice = suggestionChooser(); 
+	console.log(cpuPlayerChoice); 
+
+})
 // Tab Handlers
 $('.tabs li').click(function tabbers(){
   id = ($(this).attr('id')).split('-');
@@ -490,11 +491,11 @@ function moveSquare(direction, current, color){
     	$(direction).addClass("activePlayer"); 
     	$(current).removeClass(color);
     	$(direction).addClass(color);
+		moves = 0; 
     	setTimeout(function(){
     		$(direction).animate({
     			"background-color": "#ADD8E6",
     			}, "slow")
-    		moves = 0; 
     		$('#movesAvail').html(moves);
     	},500)
     	logThis('enter');
@@ -552,36 +553,29 @@ $(document).keydown(function(e){
 //this rolls the dice FOR USER ONLY. MODIFY TO USE DICE FACE HTML ENTITIES
 	
 $('#roll').click(function sides(){	
-	if (currentPlayer.hasRolled == false){
-		setTimeout(function(){
-			var rand = Math.floor(Math.random()*6) + 1;
-			var rand2 = Math.floor(Math.random()*6) + 1;
-			$('#die1').html(rand);
-			$('#die2').html(rand2); 
-			if (time < 800){
-				time += 71; 
-				sides(); 
-			} else if (time > 800){
-				time = 200;
-				var rolled1 = parseInt($('#die1').html()); 
-				var rolled2 = parseInt($('#die2').html());
-				moves = rolled1 + rolled2; 
-				$('#movesAvail').html(moves);
-				currentPlayer.hasRolled = true; 
-				logThis('dice');
-			}
-		}, time)
-	}
+	// if (currentPlayer.hasRolled == false){
+	// 	setTimeout(function(){
+	// 		var rand = Math.floor(Math.random()*6) + 1;
+	// 		var rand2 = Math.floor(Math.random()*6) + 1;
+	// 		$('#die1').html(rand);
+	// 		$('#die2').html(rand2); 
+	// 		if (time < 800){
+	// 			time += 71; 
+	// 			sides(); 
+	// 		} else if (time > 800){
+	// 			time = 200;
+	// 			var rolled1 = parseInt($('#die1').html()); 
+	// 			var rolled2 = parseInt($('#die2').html());
+	// 			moves = rolled1 + rolled2; 
+	// 			$('#movesAvail').html(moves);
+	// 			currentPlayer.hasRolled = true; 
+	// 			logThis('dice');
+	// 		}
+	// 	}, time)
+	// }
+	moves = 12; 
+	$('#movesAvail').html(moves);
 })
 // End Movement Handlers
 
 
-// room searcher
-$('#overlay').mousemove(function(e) {
-  var x = (e.pageX - 785);
-  var y = (e.pageY - 205);
-  $(excluder).css({
-  	"transform": " translate("+x+"px, " + y + "px)",
-  	"background-position" : ((x > 0)?'-':'') + Math.abs(x) + "px " + ((y > 0)?'-':'')+ Math.abs(y) + "px"
-  });
-})

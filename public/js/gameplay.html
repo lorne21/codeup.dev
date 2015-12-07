@@ -1,0 +1,64 @@
+gameplay.html
+
+// Gameplay
+
+//create function to check location of player: run diff functions based on that
+
+	// roll dice x
+	// track player squares moved x
+	// gamelog update x
+		// make log functions and styles
+		// 	one for player turn
+		// 	one for player die roll x
+		// 	one for player enter room x
+		// 	one for player use secret passage
+		// 	one for player suggestion
+		// 	one for player accusation
+	// store dice value in movesAllowed x 
+	// if movesAllowed > 0....
+		// must run a check
+			// if player is in hallway, turn ends, squares moved = 0
+			// if player enters door, moves = 0, inroom class
+				//if squares moved > 0, run inRoom function
+			// if player is inRoom and wants to leave
+				// create function to determine doors if multiple
+				// ask what door to leave
+				// move active player to that door
+				// roll dice
+	//if player is inRoom to start turn
+		//ask if they want to leave
+		//if there's a secret door and they have said door in array, ask if they 
+		// want to use
+			// if yes, re-run inRoom function at new location
+
+// 1. randomly decide who goes first
+		// - load players onto start buttons
+// 2. if turn = activeplayer then run playerturn
+// 3. if player not inRoom, load button to roll dice, remove button. else,
+	// load button to use secret passage if exists, begin room functionality
+// 4. if dice, moves allowed = dice total
+// 5. move character one space per move
+// 6. if player is still in hallway, load button to end turn
+// 7. if player enters a door, moves = 0, begin room functionality
+// 8. if inRoom: 
+	// a) load buttons to make suggestion, make accusation, end turn
+
+// 9. Suggestion: 
+	// a) select weapon, room will be inRoom class, select character
+	// b) on submit, for each player, if they have one or more of the cards
+	// pick random card and show to active player
+	// c) push new card into card array and update detective notebook
+			// -cpu will need its own array for a checklist. need to make function for it
+	// d) at beginning, remove suggestion button
+
+// 10. Accusation:
+	// a) select weapon, room, character
+	// b) on submit, check if accArray == winArray
+	// c) if right, game win. wrong, game lose
+	// d) load new game button
+
+// Challenging Part
+// 1. Making logic for computer move
+// 2. pick room
+// 3. get door (if more than one get closest)
+// 4. determine if it's less moves to go horizontal or vertical
